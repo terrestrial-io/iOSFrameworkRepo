@@ -13,4 +13,8 @@
 - (NSString *)translated;
 -(NSString *)translatedWithContext: (NSString *) context;
 
+
+- (NSString *)dontTranslate;
+
+
 @end
