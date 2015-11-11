@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "NSString+Terrestrial_String.h"
-#import "NSLocalizedStringSync.h"
 
 //! Project version number for Terrestrial.
 FOUNDATION_EXPORT double TerrestrialVersionNumber;
@@ -21,6 +20,7 @@ FOUNDATION_EXPORT const unsigned char TerrestrialVersionString[];
 #define translated(string) [[Terrestrial sharedInstance] stringForKey:string]
 
 #define translatedPluralString(count,_pluralDict,_contextString) [[Terrestrial sharedInstance] stringForCount:count pluralDict:_pluralDict andContext:_contextString]
+
 
 static NSString * const trstlZeroRule = @"zero";
 static NSString * const trstlOneRule = @"one";

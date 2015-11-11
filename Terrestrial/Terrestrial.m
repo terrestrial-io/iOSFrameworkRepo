@@ -163,11 +163,8 @@
     
     NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
     
-    
     NSString *translationsFolder = [bundlePath stringByAppendingPathComponent:@"Translations"];
 
-    
-    
     
     if (!retrievedStrings) {
         

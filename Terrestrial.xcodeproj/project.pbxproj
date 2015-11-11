@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7921236D1BF28BB600FDA670 /* Terrestrial_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7921236C1BF28BB600FDA670 /* Terrestrial_Extensions.swift */; settings = {ASSET_TAGS = (); }; };
 		79A982C11BBC964300C4C7A8 /* NSString+Terrestrial_String.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A982BF1BBC964300C4C7A8 /* NSString+Terrestrial_String.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79A982C21BBC964300C4C7A8 /* NSString+Terrestrial_String.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A982C01BBC964300C4C7A8 /* NSString+Terrestrial_String.m */; };
 		79D676B71BA9B02A0095F4B5 /* Terrestrial.h in Headers */ = {isa = PBXBuildFile; fileRef = 79D676B61BA9B02A0095F4B5 /* Terrestrial.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79D676BD1BA9B02B0095F4B5 /* Terrestrial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D676B11BA9B02A0095F4B5 /* Terrestrial.framework */; };
 		79D676C41BA9B02B0095F4B5 /* TerrestrialTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D676C31BA9B02B0095F4B5 /* TerrestrialTests.m */; };
 		79D676CE1BA9B0530095F4B5 /* Terrestrial.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D676CD1BA9B0530095F4B5 /* Terrestrial.m */; };
-		79DE7DEC1BC09AD400507486 /* NSLocalizedStringSync.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DE7DEB1BC09AD400507486 /* NSLocalizedStringSync.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7921236C1BF28BB600FDA670 /* Terrestrial_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terrestrial_Extensions.swift; sourceTree = "<group>"; };
 		79A982BF1BBC964300C4C7A8 /* NSString+Terrestrial_String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Terrestrial_String.h"; sourceTree = "<group>"; };
 		79A982C01BBC964300C4C7A8 /* NSString+Terrestrial_String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Terrestrial_String.m"; sourceTree = "<group>"; };
 		79D676B11BA9B02A0095F4B5 /* Terrestrial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Terrestrial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,7 +37,6 @@
 		79D676C21BA9B02B0095F4B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79D676C31BA9B02B0095F4B5 /* TerrestrialTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TerrestrialTests.m; sourceTree = "<group>"; };
 		79D676CD1BA9B0530095F4B5 /* Terrestrial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Terrestrial.m; sourceTree = "<group>"; };
-		79DE7DEB1BC09AD400507486 /* NSLocalizedStringSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSLocalizedStringSync.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,10 +80,10 @@
 			isa = PBXGroup;
 			children = (
 				79D676B61BA9B02A0095F4B5 /* Terrestrial.h */,
-				79DE7DEB1BC09AD400507486 /* NSLocalizedStringSync.h */,
 				79D676CD1BA9B0530095F4B5 /* Terrestrial.m */,
 				79A982BF1BBC964300C4C7A8 /* NSString+Terrestrial_String.h */,
 				79A982C01BBC964300C4C7A8 /* NSString+Terrestrial_String.m */,
+				7921236C1BF28BB600FDA670 /* Terrestrial_Extensions.swift */,
 				79D676B41BA9B02A0095F4B5 /* Supporting Files */,
 			);
 			path = Terrestrial;
@@ -122,7 +122,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				79D676B71BA9B02A0095F4B5 /* Terrestrial.h in Headers */,
-				79DE7DEC1BC09AD400507486 /* NSLocalizedStringSync.h in Headers */,
 				79A982C11BBC964300C4C7A8 /* NSString+Terrestrial_String.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +172,7 @@
 		79D676A81BA9B02A0095F4B5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Terrestrial;
 				TargetAttributes = {
@@ -241,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79A982C21BBC964300C4C7A8 /* NSString+Terrestrial_String.m in Sources */,
+				7921236D1BF28BB600FDA670 /* Terrestrial_Extensions.swift in Sources */,
 				79D676CE1BA9B0530095F4B5 /* Terrestrial.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,6 +367,7 @@
 		79D676C81BA9B02B0095F4B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -382,12 +384,14 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		79D676C91BA9B02B0095F4B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
