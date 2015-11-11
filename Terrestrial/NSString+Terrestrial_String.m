@@ -16,8 +16,6 @@
 
     return [[Terrestrial sharedInstance] stringForKey:self andContext:@""];
     
-    
-    
 }
 
 
