@@ -14,7 +14,7 @@
 		79D676C41BA9B02B0095F4B5 /* TerrestrialTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D676C31BA9B02B0095F4B5 /* TerrestrialTests.m */; };
 		79D676CE1BA9B0530095F4B5 /* Terrestrial.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D676CD1BA9B0530095F4B5 /* Terrestrial.m */; };
 		79E000B91BF52281001B79D8 /* Terrestrial_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7921236C1BF28BB600FDA670 /* Terrestrial_Extensions.swift */; };
-		79E000BF1BF529CB001B79D8 /* Terrestrial_Extensions.swift in Resources */ = {isa = PBXBuildFile; fileRef = 7921236C1BF28BB600FDA670 /* Terrestrial_Extensions.swift */; };
+		79E000D21BF53B36001B79D8 /* Terrestrial_Extensions.swift in Resources */ = {isa = PBXBuildFile; fileRef = 7921236C1BF28BB600FDA670 /* Terrestrial_Extensions.swift */; };
 		79F8008D1BF3766100A69642 /* TerrestrialUICategoryAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 79F8008B1BF3766100A69642 /* TerrestrialUICategoryAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79F8008E1BF3766100A69642 /* TerrestrialUICategoryAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F8008C1BF3766100A69642 /* TerrestrialUICategoryAdditions.m */; };
 /* End PBXBuildFile section */
@@ -215,7 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79E000BF1BF529CB001B79D8 /* Terrestrial_Extensions.swift in Resources */,
+				79E000D21BF53B36001B79D8 /* Terrestrial_Extensions.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +393,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/$(EXECUTABLE_PATH)";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = mh_dylib;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,6 +419,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/$(EXECUTABLE_PATH)";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = mh_dylib;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
