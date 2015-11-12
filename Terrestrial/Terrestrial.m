@@ -83,7 +83,7 @@
     NSString *type = @"default";
     
     
-    NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"(SELF.string ==[cd] %@) AND (SELF.context ==[cd] %@) AND (SELF.type == [cd] %@)",stringToTranslate ,contextString,type];
+    NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"(SELF.string ==[cd] %@) AND (SELF.context ==[cd] %@)",stringToTranslate ,contextString,type];
     
    NSArray* filteredArray = [retrievedStrings filteredArrayUsingPredicate:bPredicate];
 
