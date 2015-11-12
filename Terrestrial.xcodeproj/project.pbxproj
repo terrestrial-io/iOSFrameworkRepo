@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7908FD261BF4BF14001D797B /* Terrestrial_Extensions.swift in Resources */ = {isa = PBXBuildFile; fileRef = 7921236C1BF28BB600FDA670 /* Terrestrial_Extensions.swift */; };
 		7921236D1BF28BB600FDA670 /* Terrestrial_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7921236C1BF28BB600FDA670 /* Terrestrial_Extensions.swift */; };
 		79A982C11BBC964300C4C7A8 /* NSString+Terrestrial_String.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A982BF1BBC964300C4C7A8 /* NSString+Terrestrial_String.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79A982C21BBC964300C4C7A8 /* NSString+Terrestrial_String.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A982C01BBC964300C4C7A8 /* NSString+Terrestrial_String.m */; };
@@ -215,7 +214,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7908FD261BF4BF14001D797B /* Terrestrial_Extensions.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
