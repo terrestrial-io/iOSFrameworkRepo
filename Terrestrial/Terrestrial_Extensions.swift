@@ -9,8 +9,7 @@
 import Foundation
 
 
-public extension String {    
-    
+public extension String {
     
     var translated : String {
         return Terrestrial.sharedInstance().stringForKey(self, andContext: "")
@@ -19,7 +18,6 @@ public extension String {
     func translatedWithContext(context: String) -> String {
         return Terrestrial.sharedInstance().stringForKey(self, andContext: context)
     }
-    
     
     
 }

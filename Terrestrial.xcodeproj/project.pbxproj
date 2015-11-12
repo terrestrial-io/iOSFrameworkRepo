@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7921236D1BF28BB600FDA670 /* Terrestrial_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7921236C1BF28BB600FDA670 /* Terrestrial_Extensions.swift */; };
 		79A982C11BBC964300C4C7A8 /* NSString+Terrestrial_String.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A982BF1BBC964300C4C7A8 /* NSString+Terrestrial_String.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79A982C21BBC964300C4C7A8 /* NSString+Terrestrial_String.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A982C01BBC964300C4C7A8 /* NSString+Terrestrial_String.m */; };
 		79D676B71BA9B02A0095F4B5 /* Terrestrial.h in Headers */ = {isa = PBXBuildFile; fileRef = 79D676B61BA9B02A0095F4B5 /* Terrestrial.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79D676BD1BA9B02B0095F4B5 /* Terrestrial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D676B11BA9B02A0095F4B5 /* Terrestrial.framework */; };
 		79D676C41BA9B02B0095F4B5 /* TerrestrialTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D676C31BA9B02B0095F4B5 /* TerrestrialTests.m */; };
 		79D676CE1BA9B0530095F4B5 /* Terrestrial.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D676CD1BA9B0530095F4B5 /* Terrestrial.m */; };
+		79E000B91BF52281001B79D8 /* Terrestrial_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7921236C1BF28BB600FDA670 /* Terrestrial_Extensions.swift */; };
+		79E000BF1BF529CB001B79D8 /* Terrestrial_Extensions.swift in Resources */ = {isa = PBXBuildFile; fileRef = 7921236C1BF28BB600FDA670 /* Terrestrial_Extensions.swift */; };
 		79F8008D1BF3766100A69642 /* TerrestrialUICategoryAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 79F8008B1BF3766100A69642 /* TerrestrialUICategoryAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79F8008E1BF3766100A69642 /* TerrestrialUICategoryAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F8008C1BF3766100A69642 /* TerrestrialUICategoryAdditions.m */; };
 /* End PBXBuildFile section */
@@ -214,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79E000BF1BF529CB001B79D8 /* Terrestrial_Extensions.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,8 +249,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79E000B91BF52281001B79D8 /* Terrestrial_Extensions.swift in Sources */,
 				79A982C21BBC964300C4C7A8 /* NSString+Terrestrial_String.m in Sources */,
-				7921236D1BF28BB600FDA670 /* Terrestrial_Extensions.swift in Sources */,
 				79F8008E1BF3766100A69642 /* TerrestrialUICategoryAdditions.m in Sources */,
 				79D676CE1BA9B0530095F4B5 /* Terrestrial.m in Sources */,
 			);
@@ -299,6 +301,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -351,6 +354,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -380,6 +384,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Terrestrial",
@@ -404,6 +409,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Terrestrial",
