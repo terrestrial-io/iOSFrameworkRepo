@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NSString+Terrestrial_String.h"
+#import "TerrestrialUICategoryAdditions.h"
 
 //! Project version number for Terrestrial.
 FOUNDATION_EXPORT double TerrestrialVersionNumber;
@@ -45,6 +46,9 @@ static NSString * const trstlOtherRule = @"other";
 - (NSString *) stringForCount:(float)count pluralDict: (NSDictionary *)pluralDict andContext:(NSString *)contextString;
 
 - (void) setCurrentLanguageTo: (NSString *) lang;
+
+
++ (NSDictionary *) dictionaryWithContentsOfPlist:(NSString *)filePath;
 
 
 

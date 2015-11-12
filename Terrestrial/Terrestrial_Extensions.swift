@@ -23,18 +23,3 @@ public extension String {
     
     
 }
-
-public extension UILabel {
-    
-    
-    var translated2 : String {
-        return Terrestrial.sharedInstance().stringForKey(self, andContext: "")
-    }
-    
-    func translatedWithContext(context: String) -> String {
-        return Terrestrial.sharedInstance().stringForKey(self, andContext: context)
-    }
-    
-    
-    
-}

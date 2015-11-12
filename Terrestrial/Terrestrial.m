@@ -29,25 +29,7 @@
     
     NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
     
-    
-    NSString *translationsFolder = [bundlePath stringByAppendingPathComponent:@"Translations"];
-    
-    NSString *langFilePath = [translationsFolder stringByAppendingPathComponent:[NSString stringWithFormat:@"_lang"]];
-    
-    
-     if ([[NSFileManager defaultManager] fileExistsAtPath:langFilePath]) {
-         
-         NSLog(@"Lang file exists!");
-         
-          NSString *localeString = [[NSString alloc] initWithContentsOfFile:langFilePath encoding:NSUTF8StringEncoding error:NULL];
-         
-         localeString = [localeString stringByReplacingOccurrencesOfString:@" " withString:@""];
-         localeString = [localeString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-         manualLocale = localeString;
-         
-         
-     }
-    
+  
     
     
     if (!manualLocale ) {
@@ -61,8 +43,7 @@
     
     
     
-    
-    NSLog(@"Locale to show: %@",localeToShow);
+    //NSlog(@"Locale to show: %@",localeToShow);
     
     
     
@@ -78,6 +59,8 @@
         NSString *translationsFolder = [bundlePath stringByAppendingPathComponent:@"Translations"];
         
         NSString *localeFilePath = [translationsFolder stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json",localeToShow]];
+        
+        //NSlog(@"File to get: %@",localeFilePath);
         
         
         
@@ -95,6 +78,8 @@
    
     }
     
+    ////NSlog(@"RETRIEVED STRINGS %@",retrievedStrings);
+    
     NSString *type = @"default";
     
     
@@ -102,7 +87,7 @@
     
    NSArray* filteredArray = [retrievedStrings filteredArrayUsingPredicate:bPredicate];
 
-   NSLog(@"HERE %@",filteredArray);
+   //NSlog(@"HERE %@",filteredArray);
 
     
     NSString *translatedString;
@@ -115,7 +100,7 @@
         
         translatedString = [stringDict objectForKey:@"translation"];
         
-        NSLog(@"Translated string: %@", translatedString);
+        //NSlog(@"Translated string: %@", translatedString);
         
        
     }
@@ -200,7 +185,7 @@
     
     NSArray* filteredArray = [retrievedStrings filteredArrayUsingPredicate:bPredicate];
     
-    NSLog(@"HERE %@",filteredArray);
+    //NSlog(@"HERE %@",filteredArray);
     
     
     NSString *translatedString;
@@ -213,7 +198,7 @@
         
         translatedString = [stringDict objectForKey:@"translation"];
         
-        NSLog(@"Translated string: %@", translatedString);
+        //NSlog(@"Translated string: %@", translatedString);
         
         
     }
@@ -738,7 +723,7 @@ NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInt
         pluralRule = trstlVietnamesePluralRuleForCount(count);
     } else {
         
-        NSLog(@"Unsupported language: %@", languageCode);
+        //NSlog(@"Unsupported language: %@", languageCode);
         return nil;
         
     }
@@ -749,6 +734,117 @@ NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInt
     
     return [[NSArray alloc] initWithObjects:singular,pluralRule, nil];
     
+}
+
+
++ (NSDictionary *) dictionaryWithContentsOfPlist:(NSString *)filePath {
+    
+    
+    NSError *error;
+    NSString *fileString =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+    
+    
+    
+    NSMutableArray * plistArray = (NSMutableArray *)[fileString componentsSeparatedByString:@"\n"];
+    
+    
+    //NSlog(@"Plist Array: %@", plistArray);
+    
+    
+    
+    for (int i = 0; i < [plistArray count]; i++) {
+        
+        
+        NSMutableString *searchedString = [plistArray objectAtIndex:i];
+        NSError* error = nil;
+        
+        NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:@"(<string.*>)(.*?)</string>" options:0 error:&error];
+       
+        NSArray* matches = [regex matchesInString:searchedString options:0 range:NSMakeRange(0, [searchedString length])];
+        
+        
+        for ( NSTextCheckingResult* match in matches )
+        {
+          
+            NSString* matchText = [searchedString substringWithRange:[match range]];
+            
+            //NSlog(@"match: %@", matchText);
+            
+            //NSString *newString = [regex2 stringByReplacingMatchesInString:matchText options:0 range:NSMakeRange(0, [matchText length]) withTemplate:[[Terrestrial sharedInstance] stringForKey:stringToTranslate andContext:@""]];
+            
+           
+            
+            //NSString *newString = [regex2 stringByReplacingMatchesInString:matchText options:0 range:NSMakeRange(0, [matchText length]) withTemplate:[[Terrestrial sharedInstance] stringForKey:stringToTranslate andContext:@""]];
+            
+            NSRange matchRange = [match rangeAtIndex:2];
+            
+            NSString *stringToTranslate = [searchedString substringWithRange:matchRange];
+            
+            
+            
+            
+            NSRegularExpression* regex2 = [NSRegularExpression regularExpressionWithPattern:@" terrestrialContext=\"(.*[^\"])\"" options:0 error:&error];
+            
+            
+            NSString *firstGroupCaptured = [searchedString substringWithRange:[match rangeAtIndex:1]];
+            
+            NSTextCheckingResult *contextMatch = [regex2 firstMatchInString:firstGroupCaptured options:0 range:NSMakeRange(0, [firstGroupCaptured length])];
+            
+            NSRange contextMatchRange = [contextMatch rangeAtIndex:1];
+            
+            NSString *contextInfoString = [firstGroupCaptured substringWithRange:contextMatchRange];
+            
+
+        
+            //NSlog(@"STRING TO TRANSLATE: %@", stringToTranslate);
+            //NSlog(@"CONTEXT INFO STRING: %@", contextInfoString);
+            
+       
+        
+        }
+        
+        
+        /*
+        
+        // Pull out string tags
+        
+        NSString *stringTagRegexp = @"(<string.*>).*?(</string>)";
+        
+   
+        
+        NSString *newString = [regex stringByReplacingMatchesInString:oldString options:0 range:NSMakeRange(0, [oldString length]) withTemplate:@”21st December”];
+
+        
+        //NSString *someRegexp = @"terrestrialContext=\".* +[^\"]+\"";
+        
+        NSPredicate *myTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", someRegexp];
+        
+        NSString *fileLine = [plistArray objectAtIndex:i];
+        
+        if ([myTest evaluateWithObject: fileLine]){
+           
+            
+    
+            
+        }
+         
+         */
+        
+        
+    }
+    
+    
+    NSData* data = [fileString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    //NSlog(@"FILE STRING: %@", fileString);
+    
+    NSDictionary *plistFile = [NSPropertyListSerialization propertyListWithData:data
+                                                          options:0
+                                                           format:NULL
+                                                            error:&error];
+    
+    
+    return plistFile;
 }
 
 

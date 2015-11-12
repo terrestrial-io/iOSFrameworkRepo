@@ -11,10 +11,10 @@
 @interface NSString (Terrestrial_String)
 
 - (NSString *)translated;
--(NSString *)translatedWithContext: (NSString *) context;
-
-
+- (NSString *)translatedWithContext: (NSString *) context;
 - (NSString *)dontTranslate;
+
+@property (strong, nonatomic) NSString *terrestrialContextInfo;
 
 
 @end

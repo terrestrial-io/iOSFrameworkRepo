@@ -14,6 +14,8 @@
 		79D676BD1BA9B02B0095F4B5 /* Terrestrial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D676B11BA9B02A0095F4B5 /* Terrestrial.framework */; };
 		79D676C41BA9B02B0095F4B5 /* TerrestrialTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D676C31BA9B02B0095F4B5 /* TerrestrialTests.m */; };
 		79D676CE1BA9B0530095F4B5 /* Terrestrial.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D676CD1BA9B0530095F4B5 /* Terrestrial.m */; };
+		79F8008D1BF3766100A69642 /* TerrestrialUICategoryAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 79F8008B1BF3766100A69642 /* TerrestrialUICategoryAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79F8008E1BF3766100A69642 /* TerrestrialUICategoryAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F8008C1BF3766100A69642 /* TerrestrialUICategoryAdditions.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,8 @@
 		79D676C21BA9B02B0095F4B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79D676C31BA9B02B0095F4B5 /* TerrestrialTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TerrestrialTests.m; sourceTree = "<group>"; };
 		79D676CD1BA9B0530095F4B5 /* Terrestrial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Terrestrial.m; sourceTree = "<group>"; };
+		79F8008B1BF3766100A69642 /* TerrestrialUICategoryAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TerrestrialUICategoryAdditions.h; sourceTree = "<group>"; };
+		79F8008C1BF3766100A69642 /* TerrestrialUICategoryAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TerrestrialUICategoryAdditions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 		79D676B31BA9B02A0095F4B5 /* Terrestrial */ = {
 			isa = PBXGroup;
 			children = (
+				79F8008B1BF3766100A69642 /* TerrestrialUICategoryAdditions.h */,
+				79F8008C1BF3766100A69642 /* TerrestrialUICategoryAdditions.m */,
 				79D676B61BA9B02A0095F4B5 /* Terrestrial.h */,
 				79D676CD1BA9B0530095F4B5 /* Terrestrial.m */,
 				79A982BF1BBC964300C4C7A8 /* NSString+Terrestrial_String.h */,
@@ -122,6 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79D676B71BA9B02A0095F4B5 /* Terrestrial.h in Headers */,
+				79F8008D1BF3766100A69642 /* TerrestrialUICategoryAdditions.h in Headers */,
 				79A982C11BBC964300C4C7A8 /* NSString+Terrestrial_String.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,6 +249,7 @@
 			files = (
 				79A982C21BBC964300C4C7A8 /* NSString+Terrestrial_String.m in Sources */,
 				7921236D1BF28BB600FDA670 /* Terrestrial_Extensions.swift in Sources */,
+				79F8008E1BF3766100A69642 /* TerrestrialUICategoryAdditions.m in Sources */,
 				79D676CE1BA9B0530095F4B5 /* Terrestrial.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
