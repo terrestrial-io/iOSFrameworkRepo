@@ -60,6 +60,7 @@
         
         NSString *localeFilePath = [translationsFolder stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json",localeToShow]];
         
+
         //NSlog(@"File to get: %@",localeFilePath);
         
         
@@ -73,7 +74,42 @@
     
     retrievedStrings = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&jsonError];
             
+       
+        
+        } else {
+            
+            
+            
+            
+            NSArray *splitLocale = [localeToShow componentsSeparatedByString:@"-"];
+            
+            
+            NSString *localeFilePath2 = [translationsFolder stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json",[splitLocale objectAtIndex:0]]];
+            
+            
+            
+            if ([[NSFileManager defaultManager] fileExistsAtPath:localeFilePath2]) {
+                
+                NSString *jsonString = [[NSString alloc] initWithContentsOfFile:localeFilePath2 encoding:NSUTF8StringEncoding error:NULL];
+                
+                NSError *jsonError;
+                
+                
+                retrievedStrings = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&jsonError];
+
+                
+            }
+            
+            
+            
+            
+            
         }
+        
+        
+        
+        
+        
         
    
     }
@@ -845,6 +881,29 @@ NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInt
     
     
     return plistFile;
+}
+
+- (void) test {
+    
+    
+    NSString *string = translatedPluralString(5,
+                                              (@{@"zero": @"There are no offers left.",
+                                                 @"one":@"There is only one offer left",
+                                                 @"other":@"There are %d coins left" }),
+                                                 @"This shows the number of discount offers");
+    
+    int offerNumber = 20;
+    
+    //[Terrestrial pluralStringWithCount:offerNumber zero:@"There are no offers left" one:@"There is only one offer left" other:@"There are %%d offers left" context:@"This is the offer"];
+    
+    NSString *pluralString = [Terrestrial pluralStringWithCount:offerNumber
+                                                             id:@"offer_plural"
+                                                           zero :@"There are no offers left"
+                                                            one :@"There is only one offer left"
+                                                          other:@"There are %d offers left"
+                                                        context:@"This is my context"];
+    
+    
 }
 
 

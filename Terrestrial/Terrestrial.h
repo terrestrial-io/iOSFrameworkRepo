@@ -51,6 +51,52 @@ static NSString * const trstlOtherRule = @"other";
 + (NSDictionary *) dictionaryWithContentsOfPlist:(NSString *)filePath;
 
 
+/************* Pluralisation *************/
+
+
++ (NSString *) pluralStringWithCount: (int)count zero:(NSString *)zeroString context: (NSString *) contextString;
+
++ (NSString *) pluralStringWithCount: (int)count zero:(NSString *)zeroString one:(NSString *)zeroString context: (NSString *) contextString;
+
++ (NSString *) pluralStringWithCount: (int)count zero:(NSString *)zeroString one:(NSString *)oneString two:(NSString *)twoString context: (NSString *) contextString;
+
++ (NSString *) pluralStringWithCount: (int)count zero:(NSString *)zeroString one:(NSString *)oneString two:(NSString *)twoString few:(NSString *)fewString context: (NSString *) contextString;
+
++ (NSString *) pluralStringWithCount: (int)count zero:(NSString *)zeroString one:(NSString *)oneString two:(NSString *)twoString few:(NSString *)fewString many:(NSString *)manyString context: (NSString *) contextString;
+
++ (NSString *) pluralStringWithCount: (int)count
+                                  id:(NSString *)idString
+                                zero:(NSString *)zeroString
+                                 one:(NSString *)oneString
+                                 two:(NSString *)twoString
+                                 few:(NSString *)fewString
+                                many:(NSString *)manyString
+                               other:(NSString *)otherString
+                             context: (NSString *) contextString;
+
++ (NSString *) pluralStringWithCount: (int)count
+                                  id:(NSString *)idString
+                                zero:(NSString *)zeroString
+                                 one:(NSString *)oneString
+                               other:(NSString *)otherString
+                             context: (NSString *) contextString;
+
++ (NSString *) pluralStringWithCount: (int)count
+                                  id:(NSString *)idString
+                                zero:(NSString *)zeroString
+                               other:(NSString *)otherString
+                             context: (NSString *) contextString;
+
++ (NSString *) pluralStringWithCount: (int)count
+                                  id:(NSString *)idString
+                                one:(NSString *)zeroString
+                               other:(NSString *)otherString
+                             context: (NSString *) contextString;
+
+
+
+
+/*************************************/
 
 
 
