@@ -25,12 +25,8 @@
 - (NSString *) stringForKey: (NSString *) stringToTranslate andContext: (NSString *) contextString {
     
     NSString* localeToShow;
-    
-    
     NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
-    
-  
-    
+
     
     if (!manualLocale ) {
         
@@ -43,7 +39,7 @@
     
     
     
-    //NSlog(@"Locale to show: %@",localeToShow);
+    //NSLog(@"Locale to show: %@",localeToShow);
     
     
     
@@ -51,17 +47,14 @@
     if (!retrievedStrings) {
         
         retrievedStrings = [[NSArray alloc] init];
-    
-       
-        
-        
+
         
         NSString *translationsFolder = [bundlePath stringByAppendingPathComponent:@"Translations"];
         
         NSString *localeFilePath = [translationsFolder stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json",localeToShow]];
         
 
-        //NSlog(@"File to get: %@",localeFilePath);
+       // NSLog(@"File to get: %@",localeFilePath);
         
         
         
