@@ -72,8 +72,6 @@
         } else {
             
             
-            
-            
             NSArray *splitLocale = [localeToShow componentsSeparatedByString:@"-"];
             
             
@@ -209,6 +207,8 @@
     }
     
     NSString *type = @"plural";
+    
+    
     
     NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"(SELF.pluralRule ==[cd] %@) AND (SELF.string ==[cd] %@) AND (SELF.context ==[cd] %@) AND (SELF.type == [cd] %@)",pluralKey,stringToTranslate ,contextString,type];
     
