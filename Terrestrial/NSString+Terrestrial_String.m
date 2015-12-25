@@ -14,12 +14,40 @@
 
 -(NSString *)translated {
 
+   // if ([Terrestrial sharedInstance] a)
+    
+    if ([[Terrestrial sharedInstance] inScreenshotMode]) {
+        
+        NSDictionary *stringDict = @{
+                                     @"string":self,
+                                     @"context":@""
+                                     };
+        
+        [[Terrestrial sharedInstance] storeScannedStringDict:stringDict];
+        
+    }
+   
+    
     return [[Terrestrial sharedInstance] stringForKey:self andContext:@""];
     
 }
 
 
 -(NSString *)translatedWithContext: (NSString *) context {
+    
+    
+    if ([[Terrestrial sharedInstance] inScreenshotMode]) {
+        
+        NSDictionary *stringDict = @{
+                                     @"string":self,
+                                     @"context":context
+                                     };
+        
+        [[Terrestrial sharedInstance] storeScannedStringDict:stringDict];
+        
+    }
+    
+    
     
     return [[Terrestrial sharedInstance] stringForKey:self andContext:context];
     

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "NSString+Terrestrial_String.h"
 #import "TerrestrialUICategoryAdditions.h"
+#import "UIViewController+TerrestrialAddition.h"
+
 
 //! Project version number for Terrestrial.
 FOUNDATION_EXPORT double TerrestrialVersionNumber;
@@ -94,7 +96,16 @@ static NSString * const trstlOtherRule = @"other";
                              context: (NSString *) contextString;
 
 
+/*************************************/
 
+
+/************* Screenshots ***********/
+
+@property (strong, nonatomic) NSMutableArray *scannedStrings;
+
+- (void) storeScannedStringDict:(NSDictionary *)stringsDict;
+
+@property BOOL inScreenshotMode;
 
 /*************************************/
 

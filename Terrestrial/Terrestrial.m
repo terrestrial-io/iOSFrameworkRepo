@@ -7,6 +7,7 @@
 //
 
 #import "Terrestrial.h"
+#import "CameraView.h"
 
 @implementation Terrestrial
 
@@ -16,6 +17,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
+        [sharedInstance detectScreenshotMode];
     });
     return sharedInstance;
 }
@@ -23,6 +25,8 @@
 
 
 - (NSString *) stringForKey: (NSString *) stringToTranslate andContext: (NSString *) contextString {
+    
+    
     
     NSString* localeToShow;
     NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
@@ -37,12 +41,7 @@
         
     }
     
-    
-    
     //NSLog(@"Locale to show: %@",localeToShow);
-    
-    
-    
     
     if (!retrievedStrings) {
         
@@ -138,8 +137,6 @@
     return stringToTranslate;
     }
     
-    
-    
     //[NSString stringWithFormat:[@"Hello: %@ , how are you?" translatedWithContext:@""], translatedString];
     
 }
@@ -206,9 +203,9 @@
         
     }
     
+    
+    
     NSString *type = @"plural";
-    
-    
     
     NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"(SELF.pluralRule ==[cd] %@) AND (SELF.string ==[cd] %@) AND (SELF.context ==[cd] %@) AND (SELF.type == [cd] %@)",pluralKey,stringToTranslate ,contextString,type];
     
@@ -875,6 +872,85 @@ NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInt
     
     return plistFile;
 }
+
+
+/***** Screenshots Code *****/
+
+
+
+
+- (void) detectScreenshotMode {
+    
+    
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMode"]) {
+        
+        if (!_inScreenshotMode) {
+            
+        _inScreenshotMode = true;
+            
+        }
+        
+        
+    }
+    
+    
+}
+
+
+
+- (void) storeScannedStringDict:(NSDictionary *)stringsDict {
+    
+    if (!_scannedStrings) {
+        
+        _scannedStrings = [[NSMutableArray alloc] init];
+        
+    }
+    
+    if (![self array:_scannedStrings containsStringDict:stringsDict]) {
+        
+        [_scannedStrings addObject:stringsDict];
+        
+    }
+    
+    NSLog(@"BUILDING ARRAY: %@",_scannedStrings);
+    
+    
+}
+
+
+
+- (NSMutableArray *) getScannedStrings {
+    
+    return  _scannedStrings;
+    
+}
+
+
+
+-(BOOL) array: (NSArray *)array containsStringDict:(NSDictionary *)stringsDict
+{
+    
+    
+    NSPredicate *aPredicate = [NSPredicate predicateWithFormat:@"(SELF.string ==[cd] %@) AND (SELF.context ==[cd] %@)",[stringsDict objectForKey:@"string"] ,[stringsDict objectForKey:@"context"]];
+    
+    NSArray* filteredArray = [array filteredArrayUsingPredicate:aPredicate];
+    
+    
+    if ([filteredArray count]){
+        return YES;
+    }else{
+       return NO;
+    }
+    
+
+    
+}
+
+
+
+
+
+
 
 - (void) test {
     
