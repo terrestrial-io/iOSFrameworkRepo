@@ -16,7 +16,7 @@
 
    // if ([Terrestrial sharedInstance] a)
     
-    if ([[Terrestrial sharedInstance] inScreenshotMode]) {
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMode"]) {
         
         NSDictionary *stringDict = @{
                                      @"string":self,
@@ -36,7 +36,7 @@
 -(NSString *)translatedWithContext: (NSString *) context {
     
     
-    if ([[Terrestrial sharedInstance] inScreenshotMode]) {
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMode"]) {
         
         NSDictionary *stringDict = @{
                                      @"string":self,
