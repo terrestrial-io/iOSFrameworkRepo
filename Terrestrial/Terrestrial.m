@@ -61,7 +61,7 @@
     
     NSString *jsonString = [[NSString alloc] initWithContentsOfFile:localeFilePath encoding:NSUTF8StringEncoding error:NULL];
     
-    NSError *jsonError;
+    NSError *jsonError ;
     
     
     retrievedStrings = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&jsonError];
@@ -95,10 +95,6 @@
             
             
         }
-        
-        
-        
-        
         
         
    
@@ -177,9 +173,8 @@
     
     if (!retrievedStrings) {
         
+        
         retrievedStrings = [[NSArray alloc] init];
-        
-        
         
         
         
@@ -197,6 +192,8 @@
             
             
             retrievedStrings = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&jsonError];
+        
+            
             
         }
         
