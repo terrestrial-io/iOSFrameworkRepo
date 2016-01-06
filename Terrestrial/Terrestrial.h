@@ -24,6 +24,10 @@ FOUNDATION_EXPORT const unsigned char TerrestrialVersionString[];
 
 #define translatedPluralString(count,_pluralDict,_contextString) [[Terrestrial sharedInstance] stringForCount:count pluralDict:_pluralDict andContext:_contextString]
 
+#define NSLocalizedString(key, comment) \
+key.translatedID
+
+
 
 static NSString * const trstlZeroRule = @"zero";
 static NSString * const trstlOneRule = @"one";

@@ -19,5 +19,11 @@ public extension String {
         return Terrestrial.sharedInstance().stringForKey(self, andContext: context)
     }
     
-    
+}
+
+public extension NSObject {
+    func NSLocalizedString(key: String, comment: String) -> String {
+        return Terrestrial.sharedInstance().appStringForID(self as! String)
+    }
+
 }
