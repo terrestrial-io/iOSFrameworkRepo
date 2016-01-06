@@ -60,5 +60,11 @@
     
 }
 
+-(NSString *)translatedID {
+    
+    return [[Terrestrial sharedInstance] appStringForID: self];
+    
+}
+
 
 @end

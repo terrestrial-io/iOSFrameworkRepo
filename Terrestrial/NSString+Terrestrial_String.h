@@ -11,6 +11,7 @@
 @interface NSString (Terrestrial_String)
 
 - (NSString *)translated;
+- (NSString *)translatedID;
 - (NSString *)translatedWithContext: (NSString *) context;
 - (NSString *)dontTranslate;
 

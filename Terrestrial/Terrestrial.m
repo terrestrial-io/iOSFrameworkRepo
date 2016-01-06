@@ -24,9 +24,33 @@
 
 - (void) loadTranslationFile {
     
+     NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
+    
+    
+    if (!appStrings) {
+        
+        appStrings = [[NSArray alloc] init];
+        
+        NSString *appStringsPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"BaseStrings.json"]];
+    
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:appStringsPath]) {
+            
+            NSString *jsonString = [[NSString alloc] initWithContentsOfFile:appStringsPath encoding:NSUTF8StringEncoding error:NULL];
+            
+            NSError *jsonError ;
+            
+            appStrings = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&jsonError];
+            
+            
+            
+        }
+        
+        
+    }
+    
     
     NSString* localeToShow;
-    NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
     
     
     if (!manualLocale ) {
@@ -110,6 +134,7 @@
 
 - (NSString *) stringForKey: (NSString *) stringToTranslate andContext: (NSString *) contextString {
     
+    
     [self loadTranslationFile];
     
 
@@ -132,19 +157,90 @@
         translatedString = [stringDict objectForKey:@"translation"];
         
         //NSlog(@"Translated string: %@", translatedString);
-        
+
        
     }
     
     if (translatedString != nil){
-    return translatedString;
+   
+        return translatedString;
+    
     } else {
-    return stringToTranslate;
+    
+        return stringToTranslate;
+    
     }
     
 
     
 }
+
+- (NSString *) stringForID: (NSString *) stringToTranslate {
+    
+    [self loadTranslationFile];
+
+    
+    
+    NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"(SELF.id ==[cd] %@)",stringToTranslate];
+    
+    NSArray* filteredArray = [retrievedStrings filteredArrayUsingPredicate:bPredicate];
+    
+    NSString *translatedString;
+    
+    if ([filteredArray count] > 0 ) {
+        
+        
+        NSDictionary * stringDict = [filteredArray objectAtIndex:0];
+        
+        translatedString = [stringDict objectForKey:@"translation"];
+        
+        //NSlog(@"Translated string: %@", translatedString);
+        
+        
+    }
+    
+    if (translatedString != nil){
+        
+        return translatedString;
+        
+    } else {
+        
+        return stringToTranslate;
+        
+    }
+
+    
+}
+
+
+
+
+- (NSString *) appStringForID: (NSString *) idToTranslate {
+    
+    NSString *returnString = [self stringForID:idToTranslate];
+    
+    if (appStrings && ![returnString isEqualToString:idToTranslate]) {
+        
+        NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"(SELF.id ==[cd] %@) AND (SELF.type ==[cd] %@)",idToTranslate ,@"default"];
+        
+        NSArray* filteredArray = [appStrings filteredArrayUsingPredicate:bPredicate];
+        
+        if ([filteredArray count] > 0 ) {
+            
+        returnString = [filteredArray[0] objectForKey:@"string"];
+            
+        }
+        
+        
+    }
+    
+    
+    
+    return returnString;
+    
+}
+ 
+
 
 - (NSString *) stringForCount:(float)count pluralDict: (NSDictionary *)pluralDict andContext:(NSString *)contextString {
     
@@ -174,43 +270,6 @@
         
     }
     
-    
-    NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
-    
-    NSString *translationsFolder = [bundlePath stringByAppendingPathComponent:@"Translations"];
-
-    
-    if (!retrievedStrings) {
-        
-        
-        retrievedStrings = [[NSArray alloc] init];
-        
-        
-        
-        NSString *translationsFolder = [bundlePath stringByAppendingPathComponent:@"Translations"];
-        
-        NSString *localeFilePath = [translationsFolder stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json",localeToShow]];
-        
-        
-        
-        if ([[NSFileManager defaultManager] fileExistsAtPath:localeFilePath]) {
-            
-            NSString *jsonString = [[NSString alloc] initWithContentsOfFile:localeFilePath encoding:NSUTF8StringEncoding error:NULL];
-            
-            NSError *jsonError;
-            
-            
-            retrievedStrings = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&jsonError];
-        
-            
-            
-        }
-        
-        
-    }
-    
-    
-    
     NSString *type = @"plural";
     
     NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"(SELF.pluralRule ==[cd] %@) AND (SELF.string ==[cd] %@) AND (SELF.context ==[cd] %@) AND (SELF.type == [cd] %@)",pluralKey,stringToTranslate ,contextString,type];
@@ -225,13 +284,11 @@
     
     if ([filteredArray count] > 0 ) {
         
-        
         NSDictionary * stringDict = [filteredArray objectAtIndex:0];
         
         translatedString = [stringDict objectForKey:@"translation"];
         
         //NSlog(@"Translated string: %@", translatedString);
-        
         
     }
     
@@ -796,6 +853,7 @@ NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInt
         
         
         for ( NSTextCheckingResult* match in matches )
+        
         {
           
             NSString* matchText = [searchedString substringWithRange:[match range]];

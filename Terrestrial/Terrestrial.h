@@ -37,6 +37,7 @@ static NSString * const trstlOtherRule = @"other";
     
     NSArray *retrievedStrings;
     NSString *manualLocale;
+    NSArray *appStrings;
     
 }
 
@@ -46,6 +47,9 @@ static NSString * const trstlOtherRule = @"other";
 - (NSString *) stringForKey: (NSString *) stringToTranslate andContext: (NSString *) contextString;
 
 - (NSString *) stringForCount:(float)count pluralDict: (NSDictionary *)pluralDict andContext:(NSString *)contextString;
+
+- (NSString *) appStringForID: (NSString *) idToTranslate;
+
 
 - (void) setCurrentLanguageTo: (NSString *) lang;
 
@@ -106,6 +110,8 @@ static NSString * const trstlOtherRule = @"other";
 - (void) storeScannedStringDict:(NSDictionary *)stringsDict;
 
 @property BOOL inScreenshotMode;
+
+
 
 /*************************************/
 
