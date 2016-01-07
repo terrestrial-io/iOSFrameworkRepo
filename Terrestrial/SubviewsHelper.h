@@ -11,6 +11,7 @@
 @interface SubviewsHelper : NSObject
 
 @property (strong, nonatomic) NSMutableArray *subviewsArray;
+@property (strong, nonatomic) NSMutableArray *hiddenSubviewsArray;
 
 + (id)sharedInstance;
 

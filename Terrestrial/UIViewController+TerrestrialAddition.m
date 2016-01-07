@@ -20,6 +20,8 @@
     
   
 if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMode"] && ![[UIApplication sharedApplication].keyWindow viewWithTag:73636129]) {
+    
+    
          
     NSLog(@"Screenshot mode!");
     
@@ -90,9 +92,33 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     
     [[[UIApplication sharedApplication].keyWindow viewWithTag:73636129] setAlpha:0];
     
-   
     
+    
+    [self getAllSubviews];
+    
+    
+    
+    NSMutableArray *elementsPresentOnScreen = [self traverseTextSubviews];
+    
+    
+    
+    UIImage *blankScreenshot = [self imageFromView:[UIApplication sharedApplication].keyWindow];
+    
+    
+    for (int i = 0; i <[[[SubviewsHelper sharedInstance] hiddenSubviewsArray] count] ; i ++ ) {
+        
+        
+        UIView *subview = [[[[SubviewsHelper sharedInstance] hiddenSubviewsArray] objectAtIndex:i] objectAtIndex:0];
+        
+        [(UILabel *)subview setText:[[[[SubviewsHelper sharedInstance] hiddenSubviewsArray] objectAtIndex:i] objectAtIndex:1]];
+            
+        
+        
+        
+    }
+
     UIImage *screenshot = [self imageFromView:[UIApplication sharedApplication].keyWindow];
+    
 
 
     UILabel *progressDescription = [[UILabel alloc] initWithFrame:CGRectMake(0, [UIApplication sharedApplication].keyWindow.rootViewController.view.frame.size.height -100 + 20, [UIApplication sharedApplication].keyWindow.rootViewController.view.frame.size.width, 50)];
@@ -182,40 +208,17 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
         
 
     
-    NSMutableArray *scannedStrings = [[Terrestrial sharedInstance] scannedStrings];
-    
-    NSMutableArray *elementsPresentOnScreen = [[NSMutableArray alloc] init];
+   
         
-    NSLog(@"Scanned! %@",scannedStrings);
         
-        [self getAllSubviews];
         
-        NSLog(@"SUBVIEWS ARRAY: %@",[[SubviewsHelper sharedInstance] subviewsArray]);
         
-        for (id element in [[SubviewsHelper sharedInstance] subviewsArray]) {
-            
-            if ([element respondsToSelector:@selector(text)]) {
-            
-            for (NSDictionary *stringDict in scannedStrings ) {
-                
-                
-                if ([[stringDict objectForKey:@"string"] isEqualToString:[element text]]) {
-                    
-                    [elementsPresentOnScreen addObject:element];
-                    
-                }
-                
-                
-            }
-                
-            }
-            
-        }
         
         //elementsPresentOnScreen = [[SubviewsHelper sharedInstance] subviewsArray];
     
           
-NSLog(@"SHOT! %@",elementsPresentOnScreen);
+        NSLog(@"SHOT! %@",elementsPresentOnScreen);
+        
         
         int it = 0;
         
@@ -453,6 +456,8 @@ NSLog(@"SHOT! %@",elementsPresentOnScreen);
 
 - (UIImage *)imageFromView:(UIView *) view
 {
+    
+    
     if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
         UIGraphicsBeginImageContextWithOptions(view.frame.size, NO, [[UIScreen mainScreen] scale]);
     } else {
@@ -471,7 +476,8 @@ NSLog(@"SHOT! %@",elementsPresentOnScreen);
     [[SubviewsHelper sharedInstance] setSubviewsArray:[[NSMutableArray alloc] init]];
     
     [self listSubviewsOfView:[UIApplication sharedApplication].keyWindow];
-
+    
+    
     
 }
 
@@ -494,7 +500,142 @@ NSLog(@"SHOT! %@",elementsPresentOnScreen);
         
         // List the subviews of subview
         [self listSubviewsOfView:subview];
+        
     }
+}
+
+- (NSMutableArray *)traverseTextSubviews {
+    
+    
+    NSMutableArray *scannedStrings = [[Terrestrial sharedInstance] scannedStrings];
+    
+    NSMutableArray *elementsPresentOnScreen = [[NSMutableArray alloc] init];
+    
+    NSLog(@"Scanned! %@",scannedStrings);
+    
+    [[SubviewsHelper sharedInstance] setHiddenSubviewsArray:[[NSMutableArray alloc] init]];
+    
+    
+    NSLog(@"SUBVIEWS ARRAY: %@",[[SubviewsHelper sharedInstance] subviewsArray]);
+    
+    for (id element in [[SubviewsHelper sharedInstance] subviewsArray]) {
+        
+        if ([element respondsToSelector:@selector(text)]) {
+            
+            
+            for (NSDictionary *stringDict in scannedStrings ) {
+                
+                
+                if ([[stringDict objectForKey:@"string"] isEqualToString:[element text]]) {
+                    
+                    
+                    
+                    
+                    CGRect viewFrame = [[element superview] convertRect:[element frame] toView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
+                    
+                    CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
+                    
+                    
+                    if (CGRectIntersectsRect(viewFrame, appFrame)) {
+                        
+                        [elementsPresentOnScreen addObject:element];
+                        
+                        NSMutableDictionary *metadata = [[NSMutableDictionary alloc] init];
+                        [metadata setValue:NSStringFromClass([UILabel class]) forKey:@"element-class"];
+                        
+                        
+                        
+                        
+                        if([element isKindOfClass: [UILabel class]]){
+                            //check ur Label text here
+                            UILabel * myLabel = (UILabel *) element;
+                            
+                            
+                    
+                            
+                            
+                            [metadata setValue:myLabel.font.fontName forKey:@"font-name"];
+                            
+                            [metadata setValue:[NSString stringWithFormat: @"%.1f", myLabel.font.pointSize] forKey:@"font-size"];
+                            
+                            
+                            NSString *lineBreakString;
+                            
+                            switch(myLabel.lineBreakMode) {
+                                    
+                                case NSLineBreakByWordWrapping:
+                                    lineBreakString = @"NSLineBreakByWordWrapping";
+                                    break;
+                                case NSLineBreakByClipping:
+                                    lineBreakString = @"NSLineBreakByClipping";
+                                    break;
+                                case NSLineBreakByTruncatingHead:
+                                    lineBreakString = @"NSLineBreakByTruncatingHead";
+                                    break;
+                                case NSLineBreakByTruncatingTail:
+                                    lineBreakString = @"NSLineBreakByTruncatingTail";
+                                    break;
+                                case NSLineBreakByTruncatingMiddle:
+                                    lineBreakString = @"NSLineBreakByTruncatingMiddle";
+                                    break;
+                                default:
+                                    lineBreakString = @"unknown";
+                            }
+                            
+                            UIColor *color = myLabel.textColor;
+                            const CGFloat *components = CGColorGetComponents(color.CGColor);
+                            NSString *colorAsString = [NSString stringWithFormat:@"%.1f,%.1f,%.1f,%.1f", components[0], components[1], components[2], components[3]];
+                            
+                            [metadata setValue:lineBreakString forKey:@"line-break-mode"];
+                            [metadata setValue:lineBreakString forKey:@"line-break-mode"];
+                            
+                            [metadata setValue:colorAsString forKey:@"font-color"];
+                            
+                            CGRect viewRect = [[element superview] convertRect:[element frame] toView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
+                            
+                            [metadata setValue:[NSString stringWithFormat:@"%.2f,%.2f,%.2f,%.2f",viewRect.origin.x, viewRect.origin.y,viewRect.size.width,viewRect.size.height] forKey:@"view-rect"];
+                            
+                            CGRect superViewRect = [UIApplication sharedApplication].keyWindow.rootViewController.view.frame;
+                            
+                            [metadata setValue:[NSString stringWithFormat:@"%.2f,%.2f,%.2f,%.2f",superViewRect.origin.x, superViewRect.origin.y,superViewRect.size.width,superViewRect.size.height] forKey:@"super-view-rect"];
+                            
+                            
+                            NSLog(@"%@",NSStringFromCGRect([[element superview] convertRect:[element frame] toView:[UIApplication sharedApplication].keyWindow.rootViewController.view]));
+                            
+                            [metadata setValue:((UILabel *)element).text forKey:@"string"];
+                            
+                            
+                            NSLog(@"MY UI LABEL %@",myLabel);
+                            NSLog(@"MY UI FONT %@",myLabel.font);
+                            NSLog(@"MY METADATA! %@",metadata);
+                            
+                            
+                            [[[SubviewsHelper sharedInstance] hiddenSubviewsArray] addObject:@[element,((UILabel *)element).text]];
+                            
+                            
+                            [(UILabel *)element setText:@""];
+                            
+                            
+                            
+                            
+                        }
+                        
+                        
+                        
+                    }
+                    
+                }
+                
+                
+            }
+            
+        }
+        
+    }
+    
+    
+    return elementsPresentOnScreen;
+
 }
 
 

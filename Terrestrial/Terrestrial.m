@@ -974,6 +974,15 @@ NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInt
         
         [_scannedStrings addObject:stringsDict];
         
+    } else {
+       
+        NSMutableDictionary *mutable = [stringsDict mutableCopy];
+        
+        [mutable setValue:[NSString stringWithFormat:@"\u00a0%@\u00a0",[mutable objectForKey:@"string"]] forKey:@"string"];
+        
+        
+        [_scannedStrings addObject:(NSDictionary *) mutable];
+        
     }
     
     NSLog(@"BUILDING ARRAY: %@",_scannedStrings);

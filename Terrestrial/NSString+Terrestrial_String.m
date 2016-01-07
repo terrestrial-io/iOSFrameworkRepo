@@ -62,6 +62,18 @@
 
 -(NSString *)translatedID {
     
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMode"]) {
+        
+        NSDictionary *stringDict = @{
+                                     @"string":[[Terrestrial sharedInstance] appStringForID: self],
+                                     @"context":@"",
+                                     @"id":self
+                                     };
+        
+        [[Terrestrial sharedInstance] storeScannedStringDict:stringDict];
+        
+    }
+    
     return [[Terrestrial sharedInstance] appStringForID: self];
     
 }
