@@ -111,7 +111,7 @@ static NSString * const trstlOtherRule = @"other";
 
 @property (strong, nonatomic) NSMutableArray *scannedStrings;
 
-- (void) storeScannedStringDict:(NSDictionary *)stringsDict;
+- (NSString *) storeScannedStringDict:(NSDictionary *)stringsDict;
 
 @property BOOL inScreenshotMode;
 

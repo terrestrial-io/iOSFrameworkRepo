@@ -23,7 +23,7 @@
                                      @"context":@""
                                      };
         
-        [[Terrestrial sharedInstance] storeScannedStringDict:stringDict];
+        return [[Terrestrial sharedInstance] storeScannedStringDict:stringDict];
         
     }
    
@@ -43,7 +43,8 @@
                                      @"context":context
                                      };
         
-        [[Terrestrial sharedInstance] storeScannedStringDict:stringDict];
+        
+        return [[Terrestrial sharedInstance] storeScannedStringDict:stringDict];
         
     }
     
@@ -70,7 +71,7 @@
                                      @"id":self
                                      };
         
-        [[Terrestrial sharedInstance] storeScannedStringDict:stringDict];
+        return [[Terrestrial sharedInstance] storeScannedStringDict:stringDict];
         
     }
     

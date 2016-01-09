@@ -962,30 +962,56 @@ NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInt
 
 
 
-- (void) storeScannedStringDict:(NSDictionary *)stringsDict {
+- (NSString *) storeScannedStringDict:(NSDictionary *)stringsDict {
     
     if (!_scannedStrings) {
         
         _scannedStrings = [[NSMutableArray alloc] init];
-        
+    
     }
     
-    if (![self array:_scannedStrings containsStringDict:stringsDict]) {
+    
+    
+    NSString *string = [stringsDict objectForKey:@"string"];
+    
+    NSString *replacedString = [string stringByReplacingOccurrencesOfString:@"%@" withString:@"(.*)"];
+    
+    
+    NSMutableDictionary *newDict = [stringsDict mutableCopy];
+    
+    [newDict setValue:replacedString forKey:@"string"];
+    
+    
+    if (![self array:_scannedStrings containsStringDict:(NSDictionary *)newDict]) {
         
-        [_scannedStrings addObject:stringsDict];
+        
+        [_scannedStrings addObject:newDict];
+        
+        return string;
+
         
     } else {
+        
        
-        NSMutableDictionary *mutable = [stringsDict mutableCopy];
+        NSMutableDictionary *mutable = newDict;
         
-        [mutable setValue:[NSString stringWithFormat:@"\u00a0%@\u00a0",[mutable objectForKey:@"string"]] forKey:@"string"];
         
+        NSString *markedString = [NSString stringWithFormat:@"\u00a0%@\u00a0",[mutable objectForKey:@"string"]];
+
+        
+        [mutable setValue:markedString forKey:@"string"];
         
         [_scannedStrings addObject:(NSDictionary *) mutable];
         
+        return [NSString stringWithFormat:@"\u00a0%@\u00a0",string];
+        
+        
     }
     
-    NSLog(@"BUILDING ARRAY: %@",_scannedStrings);
+    //NSLog(@"BUILDING ARRAY: %@",_scannedStrings);
+    
+    
+    
     
     
 }

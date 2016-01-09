@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) NSMutableArray *subviewsArray;
 @property (strong, nonatomic) NSMutableArray *hiddenSubviewsArray;
+@property (strong, nonatomic) NSMutableArray *detectedStringsArray;
+
 
 + (id)sharedInstance;
 
