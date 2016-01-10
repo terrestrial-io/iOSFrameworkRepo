@@ -24,7 +24,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     
     
          
-    NSLog(@"Screenshot mode!");
+    //NSLog(@"Screenshot mode!");
     
     float padding = 20.0;
     float width = 60.0;
@@ -54,7 +54,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
             
         [[UIApplication sharedApplication].keyWindow addSubview:cameraButton];
             
-            NSLog(@"Adding screenshot button");
+            //NSLog(@"Adding screenshot button");
             
         }
     
@@ -229,7 +229,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
         //elementsPresentOnScreen = [[SubviewsHelper sharedInstance] subviewsArray];
     
           
-        NSLog(@"SHOT! %@",elementsPresentOnScreen);
+        //NSLog(@"SHOT! %@",elementsPresentOnScreen);
         
         
         int it = 0;
@@ -504,7 +504,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     for (UIView *subview in subviews) {
         
         // Do what you want to do with the subview
-       // NSLog(@"%@", subview);
+       // //NSLog(@"%@", subview);
         
         [[[SubviewsHelper sharedInstance] subviewsArray] addObject:subview];
         
@@ -523,13 +523,13 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     
     NSMutableArray *detectedStringsArray = [[NSMutableArray alloc] init];
     
-    NSLog(@"Scanned! %@",scannedStrings);
+    //NSLog(@"Scanned! %@",scannedStrings);
     
     
     [[SubviewsHelper sharedInstance] setHiddenSubviewsArray:[[NSMutableArray alloc] init]];
     
     
-    NSLog(@"SUBVIEWS ARRAY: %@",[[SubviewsHelper sharedInstance] subviewsArray]);
+    //NSLog(@"SUBVIEWS ARRAY: %@",[[SubviewsHelper sharedInstance] subviewsArray]);
     
     
     
@@ -537,7 +537,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
         
         if ([element respondsToSelector:@selector(text)]) {
             
-            NSLog(@"CLASS :%@", NSStringFromClass([element class]));
+            //NSLog(@"CLASS :%@", NSStringFromClass([element class]));
             
             for (NSDictionary *stringDict in scannedStrings ) {
                 
@@ -547,7 +547,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                 if ([equalityTest evaluateWithObject:[element text]]){
                     
                     
-                    NSLog(@"MY ELEMENT CLASS: %@", NSStringFromClass([element class]));
+                    //NSLog(@"MY ELEMENT CLASS: %@", NSStringFromClass([element class]));
                     
                     
                     CGRect viewFrame = [[element superview] convertRect:[element frame] toView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
@@ -635,8 +635,39 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                             
                             
                             UIColor *color = myLabel.textColor;
-                            const CGFloat *components = CGColorGetComponents(color.CGColor);
-                            NSString *colorAsString = [NSString stringWithFormat:@"%.1f,%.1f,%.1f,%.1f", components[0], components[1], components[2], components[3]];
+                            
+                            
+                           
+                            if ([NSStringFromClass([element class]) isEqualToString: @"UIButtonLabel"]){
+                                
+                                color = ((UIButton *)myLabel.superview). currentTitleColor;
+                               
+                                NSLog(@"Button class: %@",NSStringFromClass([((UIButton *)myLabel.superview) class]));
+                                
+                            }
+                            
+                            
+                            
+                            
+                            NSString *colorAsString;
+                            
+                            
+                            if (CGColorGetNumberOfComponents(color.CGColor) == 2) {
+                                
+                           
+                                const CGFloat *components = CGColorGetComponents(color.CGColor);
+                                    colorAsString = [NSString stringWithFormat:@"%.1f,%.1f,%.1f,%.1f", components[0], components[0], components[0], components[1]];
+                                
+                                
+                            }
+                            else if (CGColorGetNumberOfComponents(color.CGColor) == 4) {
+                                
+                                const CGFloat *components = CGColorGetComponents(color.CGColor);
+                                colorAsString = [NSString stringWithFormat:@"%.1f,%.1f,%.1f,%.1f", components[0], components[1], components[2], components[3]];
+                                
+                                
+                            }
+                           
                             
                             [metadata setValue:lineBreakString forKey:@"lineBreakMode"];
                             
@@ -653,7 +684,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                             [metadata setValue:[NSString stringWithFormat:@"%.2f,%.2f,%.2f,%.2f",superViewRect.origin.x, superViewRect.origin.y,superViewRect.size.width,superViewRect.size.height] forKey:@"superViewRect"];
                             
                             
-                            NSLog(@"%@",NSStringFromCGRect([[element superview] convertRect:[element frame] toView:[UIApplication sharedApplication].keyWindow.rootViewController.view]));
+                            //NSLog(@"%@",NSStringFromCGRect([[element superview] convertRect:[element frame] toView:[UIApplication sharedApplication].keyWindow.rootViewController.view]));
                             
                              [metadata setValue:screenshotID forKey:@"screenshotId"];
                             
@@ -665,6 +696,12 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                             NSMutableDictionary *appStringObject = [[NSMutableDictionary alloc] init];
                             
                             [metadata setValue:fixedString forKey:@"string"];
+                            
+                            NSLog(@"%@",NSStringFromClass([element class]));
+                            
+                            NSLog(@"%@",fixedString);
+                            
+                            NSLog(@"String Color: %@", colorAsString);
                             
                             
                             if ([stringDict objectForKey:@"id"]) {
@@ -684,9 +721,9 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                             
                             
                             
-                            NSLog(@"MY UI LABEL %@",myLabel);
-                            NSLog(@"MY UI FONT %@",myLabel.font);
-                            NSLog(@"MY APPSTRING! %@",appStringObject);
+                            //NSLog(@"MY UI LABEL %@",myLabel);
+                            //NSLog(@"MY UI FONT %@",myLabel.font);
+                            //NSLog(@"MY APPSTRING! %@",appStringObject);
                             
                             
                             [[[SubviewsHelper sharedInstance] hiddenSubviewsArray] addObject:@[element,((UILabel *)element).text]];
@@ -782,7 +819,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                                    
                                    ///objects = [self parseVenuesFromDictionary:responseDictionary];
                                    
-                                   NSLog(@"%@", responseDictionary);
+                                   //NSLog(@"%@", responseDictionary);
                                    
                                    
                                    
@@ -819,7 +856,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                                        
                                        [self createParseObjectWithClass:@"Media" withParams:screenshotDictionary andResponse:^(NSURLResponse *serviceResponse, id receivedData, NSError *error) {
                                            
-                                           NSLog(@"Response %@", receivedData);
+                                           //NSLog(@"Response %@", receivedData);
                                            
                                            
                                        }];
@@ -837,7 +874,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                                        
                                        [self createParseObjectWithClass:@"ElementHolder" withParams:dict andResponse:^(NSURLResponse *serviceResponse, id receivedData, NSError *error) {
                                            
-                                           NSLog(@"Response %@", receivedData);
+                                           //NSLog(@"Response %@", receivedData);
                                            
                                            
 
@@ -902,7 +939,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                                id receivedData;
                                if (connectionError) {
                                    
-                                   NSLog(@"%@", connectionError);
+                                   //NSLog(@"%@", connectionError);
                                }
                                
                                else {
@@ -910,7 +947,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                                    receivedData = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
                                    if (jsonError) {
                                    }else {
-                                       // NSLog(@"OUTPUT DATA: %@", receivedData);
+                                       // //NSLog(@"OUTPUT DATA: %@", receivedData);
                                    }
                                }
                                
