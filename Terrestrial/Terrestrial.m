@@ -185,10 +185,7 @@
     
     NSArray* filteredArray = [retrievedStrings filteredArrayUsingPredicate:bPredicate];
     
-    
-    NSPredicate *cPredicate = [NSPredicate predicateWithFormat:@"(SELF.id ==[cd] %@)",stringToTranslate];
-    
-    NSArray* filteredBaseStringsArray = [retrievedStrings filteredArrayUsingPredicate:bPredicate];
+
     
     NSString *translatedString;
     
@@ -210,19 +207,10 @@
         
     } else {
         
-       if ([filteredBaseStringsArray count] > 0 ) {
-           
-           NSDictionary * stringDict = [filteredArray objectAtIndex:0];
-           
-           NSString* theOG = [stringDict objectForKey:@"string"];
         
-           return theOG;
-           
-       } else {
-           
            return stringToTranslate;
            
-       }
+       
         
     }
 
@@ -238,7 +226,7 @@
     
     if (appStrings && ![returnString isEqualToString:idToTranslate]) {
         
-        NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"(SELF.id ==[cd] %@) AND (SELF.type ==[cd] %@)",idToTranslate ,@"default"];
+        NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"(SELF.id ==[cd] %@)",idToTranslate];
         
         NSArray* filteredArray = [appStrings filteredArrayUsingPredicate:bPredicate];
         
