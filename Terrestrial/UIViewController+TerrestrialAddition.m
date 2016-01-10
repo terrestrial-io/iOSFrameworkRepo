@@ -24,7 +24,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     
     
          
-    //NSLog(@"Screenshot mode!");
+    NSLog(@"Screenshot mode!");
     
     float padding = 20.0;
     float width = 60.0;
@@ -80,8 +80,19 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
 }
 
 
+- (void) viewWillDisappear:(BOOL)animated {
+    
+    
+    [[[UIApplication sharedApplication].keyWindow viewWithTag:73636129] removeFromSuperview];
+    
+    
+}
+
+
 
 - (void) takeScreenshot:(UIButton *)button {
+    
+    NSLog(@"Taking screenshot");
     
     UIView *greenBackground = [[UIView alloc] initWithFrame:[UIApplication sharedApplication].keyWindow.rootViewController.view.frame];
     

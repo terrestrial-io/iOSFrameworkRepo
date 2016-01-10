@@ -185,6 +185,11 @@
     
     NSArray* filteredArray = [retrievedStrings filteredArrayUsingPredicate:bPredicate];
     
+    
+    NSPredicate *cPredicate = [NSPredicate predicateWithFormat:@"(SELF.id ==[cd] %@)",stringToTranslate];
+    
+    NSArray* filteredBaseStringsArray = [retrievedStrings filteredArrayUsingPredicate:bPredicate];
+    
     NSString *translatedString;
     
     if ([filteredArray count] > 0 ) {
@@ -205,7 +210,19 @@
         
     } else {
         
-        return stringToTranslate;
+       if ([filteredBaseStringsArray count] > 0 ) {
+           
+           NSDictionary * stringDict = [filteredArray objectAtIndex:0];
+           
+           NSString* theOG = [stringDict objectForKey:@"string"];
+        
+           return theOG;
+           
+       } else {
+           
+           return stringToTranslate;
+           
+       }
         
     }
 
