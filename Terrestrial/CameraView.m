@@ -77,5 +77,17 @@
     
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+
+    NSLog(@"Touching my buttons");
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+    
+    [(UIButton *)self.superview sendActionsForControlEvents: UIControlEventTouchUpInside];
+        
+    });
+    
+}
+
 
 @end

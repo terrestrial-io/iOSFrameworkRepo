@@ -19,6 +19,9 @@ static NSString *const kREST_API_KEY = @"Sx5lodmrgVxST6Pse8V4Hkp5kff0jNMCjAaIDZA
 
 - (void)viewDidAppear:(BOOL)animated {
     
+    
+    NSLog(@"View did appear");
+    
   
 if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMode"] && ![[UIApplication sharedApplication].keyWindow viewWithTag:73636129]) {
     
@@ -34,13 +37,15 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     
     UIButton *cameraButton = [[UIButton alloc] initWithFrame:CGRectMake([UIApplication sharedApplication].keyWindow.rootViewController.view.frame.size.width - width - padding, ([UIApplication sharedApplication].keyWindow.rootViewController.view.frame.size.height/2)- (height/2), width, height)];
     
-    cameraButton.userInteractionEnabled= TRUE;
+    
     
     cameraButton.layer.cornerRadius = borderRadius;
     
     cameraButton.tag = 73636129;
     
     cameraButton.backgroundColor = [UIColor colorWithRed:26.0/255.0 green:188.0/255.0 blue:156.0/255.0 alpha:1];
+    
+    
     
     CameraView *cameraIcon = [[CameraView alloc] initWithFrame:CGRectMake(0, 0, cameraButton.frame.size.width, cameraButton.frame.size.height)];
     
@@ -50,33 +55,71 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     
     [cameraButton addSubview:cameraIcon];
     
-    cameraIcon.userInteractionEnabled = NO;
+     //cameraIcon.userInteractionEnabled = NO;
     
-        if (![[UIApplication sharedApplication].keyWindow viewWithTag:73636129]) {
+    
+    if ((![[UIApplication sharedApplication].keyWindow viewWithTag:73636129] && self.view.superview == [UIApplication sharedApplication].keyWindow )) {
             
         [[UIApplication sharedApplication].keyWindow addSubview:cameraButton];
+        
+        UIView *overlay = [[UIView alloc] initWithFrame:[UIApplication sharedApplication].keyWindow.rootViewController.view.frame];
+        
+        overlay.backgroundColor = [UIColor colorWithWhite:0 alpha:0.9];
+        
+        overlay.tag = 3267674;
+        
+        overlay.alpha = 0;
+        
+        overlay.userInteractionEnabled = NO;
+        
+        [[UIApplication sharedApplication].keyWindow addSubview:overlay];
+
             
-            //NSLog(@"Adding screenshot button");
+        //NSLog(@"Adding screenshot button");
             
         }
     
-
-   
     
-    UIView *overlay = [[UIView alloc] initWithFrame:[UIApplication sharedApplication].keyWindow.rootViewController.view.frame];
-    
-    overlay.backgroundColor = [UIColor colorWithWhite:0 alpha:0.9];
-    
-    overlay.tag = 3267674;
-    
-    overlay.alpha = 0;
-    
-    [[UIApplication sharedApplication].keyWindow addSubview:overlay];
     
     
     [cameraButton addTarget:self action:@selector(takeScreenshot:) forControlEvents:UIControlEventTouchUpInside];
     
+    //[[UIApplication sharedApplication].keyWindow layoutSubviews];
+    
+
+    
+    cameraButton.userInteractionEnabled= TRUE;
+    
+    
+    
+      //[self.view bringSubviewToFront:cameraButton];
+    
+    //[self takeScreenshot:(UIButton *)[[UIApplication sharedApplication].keyWindow viewWithTag:73636129]];
+    
+    
          }
+    
+    
+    
+   
+    
+    
+    
+}
+
+
+- (void) handleGesture: (UITapGestureRecognizer *) gest {
+    
+    NSLog(@"BINGOOO");
+    
+}
+
+
+
+- (void) recieveScreenshotNotification:(NSNotification *)note  {
+    
+   
+    //[self takeScreenshot:(UIButton *)[[UIApplication sharedApplication].keyWindow viewWithTag:73636129]];
     
     
 }
@@ -85,7 +128,14 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
 - (void) viewWillDisappear:(BOOL)animated {
     
     
+    
+    if (([[UIApplication sharedApplication].keyWindow viewWithTag:73636129] && self.view.superview == [UIApplication sharedApplication].keyWindow )) {
+    
     [[[UIApplication sharedApplication].keyWindow viewWithTag:73636129] removeFromSuperview];
+    
+        
+    }
+    
     
     
 }
@@ -93,6 +143,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
 
 
 - (void) takeScreenshot:(UIButton *)button {
+    
     
     NSLog(@"Taking screenshot");
     
@@ -105,7 +156,6 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     greenBackground.transform = CGAffineTransformMakeTranslation(0, [UIApplication sharedApplication].keyWindow.rootViewController.view.frame.size.height);
     
     [[[UIApplication sharedApplication].keyWindow viewWithTag:73636129] setAlpha:0];
-    
     
     
     [self getAllSubviews];
@@ -220,6 +270,8 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
         
         
         [[[UIApplication sharedApplication].keyWindow viewWithTag:3267674] setAlpha: 1.0];
+        
+        [[UIApplication sharedApplication].keyWindow.rootViewController.view setAlpha: 0];
         
         miniSreenshotView.transform =CGAffineTransformMakeScale(0.75, 0.75);
         miniSreenshotView.alpha = 1.0;
@@ -351,6 +403,8 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                             
                             [[[UIApplication sharedApplication].keyWindow viewWithTag:3267674] setAlpha: 0.0];
                             
+                            [[UIApplication sharedApplication].keyWindow.rootViewController.view setAlpha: 1.0];
+                            
                             progressDescription.alpha = 0.0;
                             terrestrialTitle.alpha = 0.0;
                             
@@ -425,6 +479,8 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                             
                             
                             [[[UIApplication sharedApplication].keyWindow viewWithTag:3267674] setAlpha: 0.0];
+                            
+                             [[UIApplication sharedApplication].keyWindow.rootViewController.view setAlpha: 1.0];
                             
                             progressDescription.alpha = 0.0;
                             terrestrialTitle.alpha = 0.0;
@@ -970,6 +1026,12 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     
     
 }
+
+
+
+
+
+
 
 
 
