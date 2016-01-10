@@ -34,6 +34,8 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     
     UIButton *cameraButton = [[UIButton alloc] initWithFrame:CGRectMake([UIApplication sharedApplication].keyWindow.rootViewController.view.frame.size.width - width - padding, ([UIApplication sharedApplication].keyWindow.rootViewController.view.frame.size.height/2)- (height/2), width, height)];
     
+    cameraButton.userInteractionEnabled= TRUE;
+    
     cameraButton.layer.cornerRadius = borderRadius;
     
     cameraButton.tag = 73636129;

@@ -180,12 +180,9 @@
     [self loadTranslationFile];
 
     
-    
     NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"(SELF.id ==[cd] %@)",stringToTranslate];
     
     NSArray* filteredArray = [retrievedStrings filteredArrayUsingPredicate:bPredicate];
-    
-
     
     NSString *translatedString;
     
@@ -207,7 +204,6 @@
         
     } else {
         
-        
            return stringToTranslate;
            
        
@@ -224,7 +220,7 @@
     
     NSString *returnString = [self stringForID:idToTranslate];
     
-    if (appStrings && ![returnString isEqualToString:idToTranslate]) {
+    if (appStrings && [returnString isEqualToString:idToTranslate]) {
         
         NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"(SELF.id ==[cd] %@)",idToTranslate];
         
