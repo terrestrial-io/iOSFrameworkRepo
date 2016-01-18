@@ -832,6 +832,14 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     NSString *apiToken =  [[NSUserDefaults standardUserDefaults] stringForKey:@"TerrestrialAPIToken"];
     NSString *projectId = [[NSUserDefaults standardUserDefaults] stringForKey:@"TerrestrialProjectId"];
     NSString *appId =[[NSUserDefaults standardUserDefaults] stringForKey:@"TerrestrialAppId"];
+    
+    NSString *url = @"https://mission.terrestrial.io";
+    
+    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"TerrestrialURL"]) {
+        
+        url = [[NSUserDefaults standardUserDefaults] stringForKey:@"TerrestrialURL"];
+        
+    }
    
     
     NSLog(@"API TOKEN: %@ , PROJECT ID: %@, APP ID: %@", apiToken, projectId, appId);
@@ -843,7 +851,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     app.networkActivityIndicatorVisible = YES;
     
 
-    NSString *uploadUrl = [NSString stringWithFormat:@"http://localhost:3000/projects/%@/apps/%@/screenshots",projectId, appId];
+    NSString *uploadUrl = [NSString stringWithFormat:@"%@/projects/%@/apps/%@/screenshots",url,projectId, appId];
     
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:uploadUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
                                    
@@ -899,24 +907,16 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     //Stop the status bar spinner
     app.networkActivityIndicatorVisible = NO;
     
+   
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                             
                                
-                               NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-                               
-                               if ([httpResponse statusCode] == 200) {
-                                   
-                                   NSLog(@"success");
-                               
-                               }
-                               
                                
                                responseHandler(response,data,connectionError);
                                    
                                
-   
                                
                            }];
     
