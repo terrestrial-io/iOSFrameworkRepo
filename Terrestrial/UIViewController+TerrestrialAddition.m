@@ -20,14 +20,14 @@ static NSString *const kREST_API_KEY = @"Sx5lodmrgVxST6Pse8V4Hkp5kff0jNMCjAaIDZA
 - (void)viewDidAppear:(BOOL)animated {
     
     
-    NSLog(@"View did appear");
+   // NSLog(@"View did appear");
     
   
 if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMode"] && ![[UIApplication sharedApplication].keyWindow viewWithTag:73636129]) {
     
     
          
-    NSLog(@"Screenshot mode!");
+   // NSLog(@"Screenshot mode!");
     
     float padding = 20.0;
     float width = 60.0;
@@ -55,7 +55,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     
     [cameraButton addSubview:cameraIcon];
     
-     //cameraIcon.userInteractionEnabled = NO;
+     cameraIcon.userInteractionEnabled = NO;
     
     
     if ((![[UIApplication sharedApplication].keyWindow viewWithTag:73636129] && self.view.superview == [UIApplication sharedApplication].keyWindow )) {
@@ -110,7 +110,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
 
 - (void) handleGesture: (UITapGestureRecognizer *) gest {
     
-    NSLog(@"BINGOOO");
+    //NSLog(@"BINGOOO");
     
 }
 
@@ -139,7 +139,6 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     
     
 }
-
 
 
 - (void) takeScreenshot:(UIButton *)button {
@@ -174,9 +173,6 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     UIImage *blankScreenshot = [self imageFromView:[UIApplication sharedApplication].keyWindow];
     
     //NSData *imageData = UIImagePNGRepresentation(blankScreenshot);
-    
-    
-    
     
     
     
@@ -282,15 +278,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     } completion:^(BOOL finished) {
         
         
-        
 
-    
-   
-        
-        
-        
-        
-        
         //elementsPresentOnScreen = [[SubviewsHelper sharedInstance] subviewsArray];
     
           
@@ -352,10 +340,16 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
             }];
             
             
-            [self uploadScreeenshotToParse:blankScreenshot withScreenshotID:screenshotID andDetectedStrings: [[SubviewsHelper sharedInstance] detectedStringsArray] andResponse:^(NSURLResponse *serviceResponse, id receivedData, NSError *error) {
+            CGRect superViewRect = [UIApplication sharedApplication].keyWindow.rootViewController.view.frame;
+            
+            NSString *superViewRectString = [NSString stringWithFormat:@"%.2f,%.2f,%.2f,%.2f",superViewRect.origin.x, superViewRect.origin.y,superViewRect.size.width,superViewRect.size.height];
+            
+            
+            [self uploadScreeenshot:blankScreenshot superViewRectString:superViewRectString withScreenshotID:screenshotID andDetectedStrings: [[SubviewsHelper sharedInstance] detectedStringsArray] andResponse:^(NSURLResponse *serviceResponse, id receivedData, NSError *error) {
                 
                 
-               
+                NSLog(@"Recieved Data %@",serviceResponse);
+                
                 
                 if (!error) {
                     
@@ -629,7 +623,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                         [elementsPresentOnScreen addObject:element];
                         
                         NSMutableDictionary *metadata = [[NSMutableDictionary alloc] init];
-                        [metadata setValue:NSStringFromClass([UILabel class]) forKey:@"elementClass"];
+                        [metadata setValue:NSStringFromClass([UILabel class]) forKey:@"element_class"];
                     
                         
                         
@@ -643,9 +637,9 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                             
                             
                             
-                            [metadata setValue:myLabel.font.fontName forKey:@"fontName"];
+                            [metadata setValue:myLabel.font.fontName forKey:@"font_name"];
                             
-                            [metadata setValue:[NSString stringWithFormat: @"%.1f", myLabel.font.pointSize] forKey:@"fontSize"];
+                            [metadata setValue:[NSString stringWithFormat: @"%.1f", myLabel.font.pointSize] forKey:@"font_size"];
                             
                             
                             NSString *lineBreakString;
@@ -697,7 +691,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                             
                             NSString *noOfLines = [NSString stringWithFormat:@"%li",(long)myLabel.numberOfLines];
                     
-                            [metadata setValue:noOfLines forKey:@"numberOfLines"];
+                            [metadata setValue:noOfLines forKey:@"number_of_lines"];
                             
                         
     
@@ -711,7 +705,7 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                                 
                                 color = ((UIButton *)myLabel.superview). currentTitleColor;
                                
-                                NSLog(@"Button class: %@",NSStringFromClass([((UIButton *)myLabel.superview) class]));
+                                //NSLog(@"Button class: %@",NSStringFromClass([((UIButton *)myLabel.superview) class]));
                                 
                             }
                             
@@ -738,39 +732,42 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                             }
                            
                             
-                            [metadata setValue:lineBreakString forKey:@"lineBreakMode"];
+                            [metadata setValue:lineBreakString forKey:@"line_break_mode"];
                             
-                            [metadata setValue:textAlignString forKey:@"textAlignment"];
+                            [metadata setValue:textAlignString forKey:@"text_align_mode"];
                             
-                            [metadata setValue:colorAsString forKey:@"fontColor"];
+                            [metadata setValue:colorAsString forKey:@"font_color"];
                             
                             CGRect viewRect = [[element superview] convertRect:[element frame] toView:[UIApplication sharedApplication].keyWindow.rootViewController.view];
                             
-                            [metadata setValue:[NSString stringWithFormat:@"%.2f,%.2f,%.2f,%.2f",viewRect.origin.x, viewRect.origin.y,viewRect.size.width,viewRect.size.height] forKey:@"viewRect"];
+                            [metadata setValue:[NSString stringWithFormat:@"%.2f,%.2f,%.2f,%.2f",viewRect.origin.x, viewRect.origin.y,viewRect.size.width,viewRect.size.height] forKey:@"dimensions"];
                             
                             CGRect superViewRect = [UIApplication sharedApplication].keyWindow.rootViewController.view.frame;
                             
-                            [metadata setValue:[NSString stringWithFormat:@"%.2f,%.2f,%.2f,%.2f",superViewRect.origin.x, superViewRect.origin.y,superViewRect.size.width,superViewRect.size.height] forKey:@"superViewRect"];
+                            //[metadata setValue:[NSString stringWithFormat:@"%.2f,%.2f,%.2f,%.2f",superViewRect.origin.x, superViewRect.origin.y,superViewRect.size.width,superViewRect.size.height] forKey:@"superViewRect"];
                             
                             
                             //NSLog(@"%@",NSStringFromCGRect([[element superview] convertRect:[element frame] toView:[UIApplication sharedApplication].keyWindow.rootViewController.view]));
                             
-                             [metadata setValue:screenshotID forKey:@"screenshotId"];
+                             //[metadata setValue:screenshotID forKey:@"screenshotId"];
                             
                             
                             NSString *fixedString = [[[stringDict objectForKey:@"string"] stringByReplacingOccurrencesOfString:@"\u00a0" withString:@""] stringByReplacingOccurrencesOfString:@"(.*)" withString:@"%@"];
                            
                             
                             
-                            NSMutableDictionary *appStringObject = [[NSMutableDictionary alloc] init];
+                            
                             
                             [metadata setValue:fixedString forKey:@"string"];
                             
-                            NSLog(@"%@",NSStringFromClass([element class]));
+                            //NSLog(@"%@",NSStringFromClass([element class]));
                             
-                            NSLog(@"%@",fixedString);
+                            //NSLog(@"%@",fixedString);
                             
-                            NSLog(@"String Color: %@", colorAsString);
+                            //NSLog(@"String Color: %@", colorAsString);
+                            
+                            [metadata setValue:@"" forKey:@"identifier"];
+                            
                             
                             
                             if ([stringDict objectForKey:@"id"]) {
@@ -782,8 +779,6 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                             [metadata setValue:[stringDict objectForKey:@"context"] forKey:@"context"];
                             
                             
-                            
-                            [appStringObject setValue:@{@"identifiers":@[@""],@"screenshots": @[metadata]} forKey:@"metadata"];
                             
                             
                             [detectedStringsArray addObject:metadata];
@@ -829,42 +824,77 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
 }
 
 
--(void) uploadScreeenshotToParse: (UIImage *)screenshot withScreenshotID:(NSString *)screenshotID andDetectedStrings:(NSArray *)arrayOfDetectedStrings andResponse:(void (^)(NSURLResponse *serviceResponse, id receivedData, NSError *error))responseHandler {
+-(void) uploadScreeenshot: (UIImage *)screenshot superViewRectString:(NSString *)superViewRectString withScreenshotID:(NSString *)screenshotID andDetectedStrings:(NSArray *)arrayOfDetectedStrings andResponse:(void (^)(NSURLResponse *serviceResponse, id receivedData, NSError *error))responseHandler {
     
     
-    NSString *fileExtension = @".jpg";
+    NSLog(@"Uploading screenshots");
+    
+    NSString *apiToken =  [[NSUserDefaults standardUserDefaults] stringForKey:@"TerrestrialAPIToken"];
+    NSString *projectId = [[NSUserDefaults standardUserDefaults] stringForKey:@"TerrestrialProjectId"];
+    NSString *appId =[[NSUserDefaults standardUserDefaults] stringForKey:@"TerrestrialAppId"];
+   
+    
+    NSLog(@"API TOKEN: %@ , PROJECT ID: %@, APP ID: %@", apiToken, projectId, appId);
     
     
-    //Activate the status bar spinner
+
+
     UIApplication* app = [UIApplication sharedApplication];
     app.networkActivityIndicatorVisible = YES;
     
-    //The image you want to upload represented in JPEG
-    //NOTE: the 'selectedPhoto' needs to be replaced with the UIImage you'd like to upload
-    NSData *imageData = UIImageJPEGRepresentation(screenshot, 0.5);
+
+    NSString *uploadUrl = [NSString stringWithFormat:@"http://localhost:3000/projects/%@/apps/%@/screenshots",projectId, appId];
     
-    //NOTE: Change this to the upload URL you're posting to
-    NSString *uploadUrl = [NSString stringWithFormat:@"https://api.parse.com/1/files/%@%@",screenshotID, fileExtension];
-    
-    NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:uploadUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5.0];
+    NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:uploadUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
                                    
                                    
     [request setURL:[NSURL URLWithString:uploadUrl]];
     [request setHTTPMethod:@"POST"];
-    [request setValue:kPARSE_APPLICATION_ID forHTTPHeaderField:@"X-Parse-Application-Id"];
-    [request setValue:kREST_API_KEY forHTTPHeaderField:@"X-Parse-REST-API-Key"];
-    [request setValue:@"image/jpeg" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:imageData];
+    [request setValue:apiToken forHTTPHeaderField:@"AUTHENTICATE"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSString *base64string =[NSString stringWithFormat:@"data:image/jpg;base64,%@",[UIImageJPEGRepresentation(screenshot,1.0) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
+    
+   
+   // base64string = [base64string stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
+    
+     //NSLog(@"BASE 64 String %@", base64string);
+    
+    
+    NSDictionary *imageDataDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                                            base64string, @"data",
+                                                            superViewRectString, @"dimensions",
+                                                                nil];
+    
+    NSDictionary *screenshotDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:
+                               imageDataDict, @"image",
+                                     arrayOfDetectedStrings, @"elements",
+                               nil];
+    
+   
+    NSDictionary *bodyDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                          screenshotDictionary, @"screenshot",
+                                          nil];
+    
+    //NSLog(@"Body dict: %@", bodyDictionary);
+    
+    NSError *error;
+    
+    NSData *postData = [NSJSONSerialization dataWithJSONObject:bodyDictionary options:0 error:&error];
+
+    [request setHTTPBody:postData];
+    
+    
     
     
     
     // Configure your request here.  Set timeout values, HTTP Verb, etc.
-    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self ];
+    //NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self ];
     
     
     
     //start the connection
-    [connection start];
+    //[connection start];
     
     //Stop the status bar spinner
     app.networkActivityIndicatorVisible = NO;
@@ -872,106 +902,21 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                            
                                
+                               NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
                                
+                               if ([httpResponse statusCode] == 200) {
+                                   
+                                   NSLog(@"success");
                                
-                               
-                               NSArray *objects;
-                               
-                               
-                               if (data) {
-                                   
-                                   
-                                   NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                   
-                                   objects = [NSArray array];
-                                   
-                                   ///objects = [self parseVenuesFromDictionary:responseDictionary];
-                                   
-                                   //NSLog(@"%@", responseDictionary);
-                                   
-                                   
-                                   
-                                   dispatch_async(dispatch_get_main_queue(), ^{
-                                       
-                                       /*
-                                        
-                                        
-                                       NSMutableDictionary * dictionary = [[NSMutableDictionary alloc]init];
-                                       [dictionary setObject:@"Yo" forKey:@"element-class"];
-                                       [dictionary setObject:@"tralala" forKey:@"font-color"];
-                                       [dictionary setObject:@"He is bla bla bla bla bla " forKey:@"font-name"];
-                                       [dictionary setObject:@"He is bla bla bla bla bla " forKey:@"font-size"];
-                                       [dictionary setObject:@"He is bla bla bla bla bla " forKey:@"line-break-mode"];
-                                       [dictionary setObject:@"He is bla bla bla bla bla " forKey:@"screenshot-id"];
-                                       [dictionary setObject:@"He is bla bla bla bla bla " forKey:@"super-view-rect"];
-                                       [dictionary setObject:@"He is bla bla bla bla bla " forKey:@"view-rect"]; 
-                                        
-                                        
-                                        */
-                                       
-                                       
-                                       
-                                       
-                                       NSMutableDictionary * screenshotDictionary = [[NSMutableDictionary alloc] init];
-                                       
-                                       [screenshotDictionary setObject:[responseDictionary valueForKey:@"url"] forKey:@"screenshotURL"];
-                                       
-                                       [screenshotDictionary setObject:screenshotID forKey:@"screenshotID"];
-                                       
-                                       
-                                       
-                                       
-                                       
-                                       [self createParseObjectWithClass:@"Media" withParams:screenshotDictionary andResponse:^(NSURLResponse *serviceResponse, id receivedData, NSError *error) {
-                                           
-                                           //NSLog(@"Response %@", receivedData);
-                                           
-                                           
-                                       }];
-                                       
-                                       
-                              
-                                       
-                                       for (NSDictionary *elementHolder in arrayOfDetectedStrings) {
-                                       
-                                           
-                                           NSMutableDictionary *dict = [elementHolder mutableCopy];
-                                           
-                                           [dict setObject:[responseDictionary valueForKey:@"url"] forKey:@"screenshotURL"];
-                                           
-                                       
-                                       [self createParseObjectWithClass:@"ElementHolder" withParams:dict andResponse:^(NSURLResponse *serviceResponse, id receivedData, NSError *error) {
-                                           
-                                           //NSLog(@"Response %@", receivedData);
-                                           
-                                           
-
-                                           
-                                           
-                                       }];
-                                       
-                                           
-                                           
-                                           
-                                           
-                                       }
-                                       
-                                       
-                                      
-                                       
-                                       
-                                   });
-                                   
-                                   
-                                   
-                                   
                                }
                                
                                
-                               responseHandler (response,data,connectionError);
+                               responseHandler(response,data,connectionError);
+                                   
                                
-                               
+   
                                
                            }];
     
