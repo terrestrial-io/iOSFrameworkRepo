@@ -850,7 +850,8 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
     UIApplication* app = [UIApplication sharedApplication];
     app.networkActivityIndicatorVisible = YES;
     
-
+    
+    
     NSString *uploadUrl = [NSString stringWithFormat:@"%@/projects/%@/apps/%@/screenshots",url,projectId, appId];
     
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:uploadUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
