@@ -10,6 +10,7 @@
 #import "Terrestrial.h"
 #import "CameraView.h"
 #import "SubviewsHelper.h"
+#import "MixPanelTracker.h"
 
 static NSString *const kPARSE_APPLICATION_ID = @"jLfE0cKCiFf1HOVU1WkMTgP83oinMvoTrBZahWHC";
 static NSString *const kREST_API_KEY = @"Sx5lodmrgVxST6Pse8V4Hkp5kff0jNMCjAaIDZAr";
@@ -415,6 +416,10 @@ if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMo
                             [terrestrialTitle removeFromSuperview ];
                             [miniSreenshotView removeFromSuperview ];
                             //[[[UIApplication sharedApplication].keyWindow viewWithTag:3267674] removeFromSuperview];
+                            
+                            
+                            
+                            [MixPanelTracker trackEvent:@"Screenshot successfully uploaded" withProperties:nil];
                             
                             
                             

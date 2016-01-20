@@ -13,6 +13,8 @@
 		791981101C2C27C400CBA74B /* SubviewsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7919810E1C2C27C400CBA74B /* SubviewsHelper.m */; };
 		791981171C2C408E00CBA74B /* UIViewController+TerrestrialAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 791981151C2C408E00CBA74B /* UIViewController+TerrestrialAddition.m */; };
 		791981181C2C408E00CBA74B /* UIViewController+TerrestrialAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = 791981161C2C408E00CBA74B /* UIViewController+TerrestrialAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79663C931C502A0D002C9522 /* MixPanelTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 79663C911C502A0C002C9522 /* MixPanelTracker.h */; };
+		79663C941C502A0D002C9522 /* MixPanelTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 79663C921C502A0C002C9522 /* MixPanelTracker.m */; };
 		79A982C11BBC964300C4C7A8 /* NSString+Terrestrial_String.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A982BF1BBC964300C4C7A8 /* NSString+Terrestrial_String.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79A982C21BBC964300C4C7A8 /* NSString+Terrestrial_String.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A982C01BBC964300C4C7A8 /* NSString+Terrestrial_String.m */; };
 		79D676B71BA9B02A0095F4B5 /* Terrestrial.h in Headers */ = {isa = PBXBuildFile; fileRef = 79D676B61BA9B02A0095F4B5 /* Terrestrial.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -43,6 +45,8 @@
 		791981161C2C408E00CBA74B /* UIViewController+TerrestrialAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TerrestrialAddition.h"; sourceTree = "<group>"; };
 		791981191C2C44DE00CBA74B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7921236C1BF28BB600FDA670 /* Terrestrial_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terrestrial_Extensions.swift; sourceTree = "<group>"; };
+		79663C911C502A0C002C9522 /* MixPanelTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixPanelTracker.h; sourceTree = "<group>"; };
+		79663C921C502A0C002C9522 /* MixPanelTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixPanelTracker.m; sourceTree = "<group>"; };
 		79A982BF1BBC964300C4C7A8 /* NSString+Terrestrial_String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Terrestrial_String.h"; sourceTree = "<group>"; };
 		79A982C01BBC964300C4C7A8 /* NSString+Terrestrial_String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Terrestrial_String.m"; sourceTree = "<group>"; };
 		79D676B11BA9B02A0095F4B5 /* Terrestrial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Terrestrial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +88,8 @@
 				7919810E1C2C27C400CBA74B /* SubviewsHelper.m */,
 				791981041C2C258100CBA74B /* CameraView.h */,
 				791981051C2C258100CBA74B /* CameraView.m */,
+				79663C911C502A0C002C9522 /* MixPanelTracker.h */,
+				79663C921C502A0C002C9522 /* MixPanelTracker.m */,
 			);
 			name = Screenshots;
 			sourceTree = "<group>";
@@ -160,6 +166,7 @@
 				79D676B71BA9B02A0095F4B5 /* Terrestrial.h in Headers */,
 				79F8008D1BF3766100A69642 /* TerrestrialUICategoryAdditions.h in Headers */,
 				791981061C2C258100CBA74B /* CameraView.h in Headers */,
+				79663C931C502A0D002C9522 /* MixPanelTracker.h in Headers */,
 				79A982C11BBC964300C4C7A8 /* NSString+Terrestrial_String.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +292,7 @@
 				791981071C2C258100CBA74B /* CameraView.m in Sources */,
 				79F8008E1BF3766100A69642 /* TerrestrialUICategoryAdditions.m in Sources */,
 				791981101C2C27C400CBA74B /* SubviewsHelper.m in Sources */,
+				79663C941C502A0D002C9522 /* MixPanelTracker.m in Sources */,
 				79D676CE1BA9B0530095F4B5 /* Terrestrial.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
