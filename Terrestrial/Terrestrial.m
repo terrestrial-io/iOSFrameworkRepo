@@ -52,10 +52,13 @@
     
     NSString* localeToShow;
     
+    manualLocale = _currentLanguageCode;
     
     if (!manualLocale ) {
         
         localeToShow = [self getCurrentDeviceLanguage];
+        _currentLanguageCode = localeToShow;
+        
     } else {
         
         localeToShow = manualLocale;
@@ -261,13 +264,17 @@
     
     NSString* localeToShow;
 
+    manualLocale = _currentLanguageCode;
     
     if (!manualLocale ) {
         
         localeToShow = [self getCurrentDeviceLanguage];
+        _currentLanguageCode = localeToShow;
+        
     } else {
         
         localeToShow = manualLocale;
+        
         
     }
     
@@ -313,9 +320,9 @@
     
 }
 
-- (void) setCurrentLanguageTo: (NSString *) lang {
-    
-    manualLocale = lang;
++ (void) setCurrentLanguageTo: (NSString *) lang {
+
+    [[Terrestrial sharedInstance] setCurrentLanguageCode:lang];
     
 }
 

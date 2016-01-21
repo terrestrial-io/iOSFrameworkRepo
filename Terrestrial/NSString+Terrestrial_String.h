@@ -10,10 +10,13 @@
 
 @interface NSString (Terrestrial_String)
 
-- (NSString *)translated;
-- (NSString *)translatedID;
+
+@property (nonatomic, copy, readonly) NSString *translated;
+@property (nonatomic, copy, readonly) NSString *translatedID;
+
 - (NSString *)translatedWithContext: (NSString *) context;
 - (NSString *)dontTranslate;
+
 
 @property (strong, nonatomic) NSString *terrestrialContextInfo;
 

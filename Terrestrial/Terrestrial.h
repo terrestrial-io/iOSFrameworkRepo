@@ -55,7 +55,7 @@ static NSString * const trstlOtherRule = @"other";
 - (NSString *) appStringForID: (NSString *) idToTranslate;
 
 
-- (void) setCurrentLanguageTo: (NSString *) lang;
++ (void) setCurrentLanguageTo: (NSString *) lang;
 
 
 + (NSDictionary *) dictionaryWithContentsOfPlist:(NSString *)filePath;
@@ -119,6 +119,8 @@ static NSString * const trstlOtherRule = @"other";
 
 /*************************************/
 
+
+@property (strong, nonatomic) NSString *currentLanguageCode;
 
 
 @end
