@@ -8,5 +8,5 @@ cd /iOSFrameworkRepo
 git add -A
 git commit -m "Build version $input_variable"
 git tag $input_variable
-git checkout -b master
-git push origin master
+git push --all
+
