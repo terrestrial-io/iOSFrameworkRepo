@@ -35,8 +35,8 @@ pod "Terrestrial"
 
 ## Author
 
-Joseph , joe@terrestrial.io
+[Terrestrial Ltd](http://terrestrial.io)
 
 ## License
 
-Terrestrial is avail	able under the MIT license. See the LICENSE file for more info.
+Terrestrial is available under the MIT license. See the LICENSE file for more info.
