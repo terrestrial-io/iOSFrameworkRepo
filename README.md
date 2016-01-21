@@ -27,7 +27,7 @@ it, simply add the following line to your Cartfile:
 ```ruby
 github "terrestrial-io/iOSFrameworkRepo"
 ```
-Not that the framework will be copied to the path `Carthage/Checkouts/iOSFramework/Terrestrial.framework`
+Not that the framework will be copied to the search path `$(PROJECT_DIR)/Carthage/Checkouts/iOSFramework/`
 
 ## Author
 
