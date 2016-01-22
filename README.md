@@ -21,13 +21,13 @@ pod "Terrestrial"
 
 ### Carthage
 
-Terrestrial is available through [Carthage](http://cocoapods.org). To install
+Terrestrial is available through [Carthage](https://github.com/Carthage/Carthage). To install
 it, simply add the following line to your Cartfile:
 
 ```ruby
 github "terrestrial-io/iOSFrameworkRepo"
 ```
-Not that the framework will be copied to the search path `$(PROJECT_DIR)/Carthage/Checkouts/iOSFramework/`
+Note that the framework search path will be `$(PROJECT_DIR)/Carthage/Checkouts/iOSFramework/`
 
 ## Author
 
