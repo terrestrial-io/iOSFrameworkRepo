@@ -16,6 +16,9 @@ git tag $input_variable
 git push --all
 git push --tags 
 
+pod trunk push Terrestrial.podspec
+
+
 cd ..
 
 git add -A
