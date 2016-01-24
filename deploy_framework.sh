@@ -8,7 +8,7 @@ echo Enter new version number
 read input_variable
 echo "You entered: $input_variable" 
 
-sed -i '' 's/\(s.version.*=.*\"\)\(.*\)\"/s.version          = \"$input_variable\"/1' Terrestrial.podspec
+sed -i '' 's/\(s.version.*=.*\"\)\(.*\)\"/s.version          = \"'$input_variable'\"/1' Terrestrial.podspec
 
 git add -A
 git commit -m "Build version $input_variable"
