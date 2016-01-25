@@ -1,5 +1,5 @@
 
-xcodebuild -project Terrestrial.xcodeproj -scheme Terrestrial -sdk iphonesimulator -configuration 'Release' -destination 'platform=iOS Simulator,name=iPhone 6S,OS=latest' clean build
+#xcodebuild -project Terrestrial.xcodeproj -scheme Terrestrial -sdk iphonesimulator -configuration 'Release' -destination 'platform=iOS Simulator,name=iPhone 6S,OS=latest' clean build
 
 cd iOSFrameworkRepo
 
