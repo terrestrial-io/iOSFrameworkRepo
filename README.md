@@ -5,7 +5,9 @@
 [![License](https://img.shields.io/cocoapods/l/Terrestrial.svg?style=flat)](http://cocoapods.org/pods/Terrestrial)
 [![Platform](https://img.shields.io/cocoapods/p/Terrestrial.svg?style=flat)](http://cocoapods.org/pods/Terrestrial)
 
-Localize an entire app with just 3 commands 
+App translations that will always fit your UI.
+
+Give translators Live UI previews of their translations inside you UI.
 
 Join the beta at [terrestrial.io](http://terrestrial.io) 
 
@@ -32,7 +34,6 @@ it, simply add the following line to your Cartfile:
 ```ruby
 github "terrestrial-io/iOSFrameworkRepo"
 ```
-Note that the framework search path will be `$(PROJECT_DIR)/Carthage/Checkouts/iOSFramework/`
 
 ## Author
 
