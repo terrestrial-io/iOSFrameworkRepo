@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "NSString+Terrestrial_String.h"
 #import "TerrestrialUICategoryAdditions.h"
-#import "UIViewController+TerrestrialAddition.h"
 
+/*** Terrestrial photoshoot framework ***/
+#import <TerrestrialPhotoshoot/TerrestrialPhotoshoot.h>
 
 //! Project version number for Terrestrial.
 FOUNDATION_EXPORT double TerrestrialVersionNumber;
@@ -18,23 +19,13 @@ FOUNDATION_EXPORT double TerrestrialVersionNumber;
 //! Project version string for Terrestrial.
 FOUNDATION_EXPORT const unsigned char TerrestrialVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <Terrestrial/PublicHeader.h>
+
+/*** Helper terrestrial specific macros if you prefer to use macros ***/
 
 #define translated(string) [[Terrestrial sharedInstance] stringForKey:string]
 
 #define translatedPluralString(count,_pluralDict,_contextString) [[Terrestrial sharedInstance] stringForCount:count pluralDict:_pluralDict andContext:_contextString]
 
-#define NSLocalizedString(key, comment) \
-key.translatedID
-
-
-
-static NSString * const trstlZeroRule = @"zero";
-static NSString * const trstlOneRule = @"one";
-static NSString * const trstlTwoRule = @"two";
-static NSString * const trstlFewRule = @"few";
-static NSString * const trstlManyRule = @"many";
-static NSString * const trstlOtherRule = @"other";
 
 
 @interface Terrestrial : NSObject {
@@ -45,8 +36,14 @@ static NSString * const trstlOtherRule = @"other";
     
 }
 
+
+
 + (id)sharedInstance;
 
+
+
+
+/*** Runtime string retrieval functions ***/
 
 - (NSString *) stringForKey: (NSString *) stringToTranslate andContext: (NSString *) contextString;
 
@@ -55,18 +52,27 @@ static NSString * const trstlOtherRule = @"other";
 - (NSString *) appStringForID: (NSString *) idToTranslate;
 
 
+
+/*** Helper function to set current language of app at runtime ***/
+
 + (void) setCurrentLanguageTo: (NSString *) lang;
 
 
-+ (NSDictionary *) dictionaryWithContentsOfPlist:(NSString *)filePath;
+/*** Property to get current language ***/
+
+@property (strong, nonatomic) NSString *currentLanguageCode;
 
 
-/************* Pluralisation *************/
 
+/*** Pluralisation helper functions ***/
+
+/*
 
 + (NSString *) pluralStringWithCount: (int)count zero:(NSString *)zeroString context: (NSString *) contextString;
 
 + (NSString *) pluralStringWithCount: (int)count zero:(NSString *)zeroString one:(NSString *)zeroString context: (NSString *) contextString;
+
+
 
 + (NSString *) pluralStringWithCount: (int)count zero:(NSString *)zeroString one:(NSString *)oneString two:(NSString *)twoString context: (NSString *) contextString;
 
@@ -99,28 +105,11 @@ static NSString * const trstlOtherRule = @"other";
 
 + (NSString *) pluralStringWithCount: (int)count
                                   id:(NSString *)idString
-                                one:(NSString *)zeroString
+                                 one:(NSString *)zeroString
                                other:(NSString *)otherString
                              context: (NSString *) contextString;
 
-
-/*************************************/
-
-
-/************* Screenshots ***********/
-
-@property (strong, nonatomic) NSMutableArray *scannedStrings;
-
-- (NSString *) storeScannedStringDict:(NSDictionary *)stringsDict;
-
-@property BOOL inScreenshotMode;
-
-
-
-/*************************************/
-
-
-@property (strong, nonatomic) NSString *currentLanguageCode;
+*/
 
 
 @end

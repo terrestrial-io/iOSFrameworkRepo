@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TerrestrialPhotoshoot.h"
 
 @interface UIViewController (TerrestrialAddition)
 

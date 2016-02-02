@@ -8,26 +8,23 @@
 
 #import "NSString+Terrestrial_String.h"
 #import "Terrestrial.h"
+#import <TerrestrialPhotoshoot/TerrestrialPhotoshoot.h>
 
 
 @implementation NSString (Terrestrial_String)
 
--(NSString *)translated {
+@dynamic terrestrialContextInfo;
 
-   // if ([Terrestrial sharedInstance] a)
+
+-(NSString *)translated {
     
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMode"]) {
+    if ([[TerrestrialPhotoshoot sharedInstance] inScreenshotMode]) {
         
-        NSDictionary *stringDict = @{
-                                     @"string":self,
-                                     @"context":@""
-                                     };
-        
-        return [[Terrestrial sharedInstance] storeScannedStringDict:stringDict];
+        return  [[TerrestrialPhotoshoot sharedInstance] trackOnScreenString:self withKey:@""];
         
     }
-   
     
+    //return [[NSBundle mainBundle] localizedStringForKey:self value:@"" table:nil];
     return [[Terrestrial sharedInstance] stringForKey:self andContext:@""];
     
 }
@@ -36,20 +33,13 @@
 -(NSString *)translatedWithContext: (NSString *) context {
     
     
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMode"]) {
+    if ([[TerrestrialPhotoshoot sharedInstance] inScreenshotMode]) {
         
-        NSDictionary *stringDict = @{
-                                     @"string":self,
-                                     @"context":context
-                                     };
-        
-        
-        return [[Terrestrial sharedInstance] storeScannedStringDict:stringDict];
+        return  [[TerrestrialPhotoshoot sharedInstance] trackOnScreenString:self withKey:@""];
         
     }
     
-    
-    
+    //return [[NSBundle mainBundle] localizedStringForKey:self value:@"" table:nil];
     return [[Terrestrial sharedInstance] stringForKey:self andContext:context];
     
 }
@@ -63,17 +53,13 @@
 
 -(NSString *)translatedID {
     
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMode"]) {
+    if ([[TerrestrialPhotoshoot sharedInstance] inScreenshotMode]) {
         
-        NSDictionary *stringDict = @{
-                                     @"string":[[Terrestrial sharedInstance] appStringForID: self],
-                                     @"context":@"",
-                                     @"id":self
-                                     };
-        
-        return [[Terrestrial sharedInstance] storeScannedStringDict:stringDict];
+        return  [[TerrestrialPhotoshoot sharedInstance] trackOnScreenString:[[Terrestrial sharedInstance] appStringForID: self] withKey:self];
         
     }
+    
+    //return [[NSBundle mainBundle] localizedStringForKey:self value:@"" table:nil];
     
     return [[Terrestrial sharedInstance] appStringForID: self];
     

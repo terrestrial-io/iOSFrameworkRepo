@@ -7,15 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		791981061C2C258100CBA74B /* CameraView.h in Headers */ = {isa = PBXBuildFile; fileRef = 791981041C2C258100CBA74B /* CameraView.h */; };
-		791981071C2C258100CBA74B /* CameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 791981051C2C258100CBA74B /* CameraView.m */; };
-		7919810F1C2C27C400CBA74B /* SubviewsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 7919810D1C2C27C400CBA74B /* SubviewsHelper.h */; };
-		791981101C2C27C400CBA74B /* SubviewsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7919810E1C2C27C400CBA74B /* SubviewsHelper.m */; };
-		791981171C2C408E00CBA74B /* UIViewController+TerrestrialAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 791981151C2C408E00CBA74B /* UIViewController+TerrestrialAddition.m */; };
-		791981181C2C408E00CBA74B /* UIViewController+TerrestrialAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = 791981161C2C408E00CBA74B /* UIViewController+TerrestrialAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79663C931C502A0D002C9522 /* MixPanelTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 79663C911C502A0C002C9522 /* MixPanelTracker.h */; };
-		79663C941C502A0D002C9522 /* MixPanelTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 79663C921C502A0C002C9522 /* MixPanelTracker.m */; };
 		79663C961C5129C7002C9522 /* APITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79663C951C5129C7002C9522 /* APITests.m */; };
+		796D34B81C61255B0080A23D /* TerrestrialPhotoshoot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796D34B71C61255B0080A23D /* TerrestrialPhotoshoot.framework */; };
 		79A982C11BBC964300C4C7A8 /* NSString+Terrestrial_String.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A982BF1BBC964300C4C7A8 /* NSString+Terrestrial_String.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79A982C21BBC964300C4C7A8 /* NSString+Terrestrial_String.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A982C01BBC964300C4C7A8 /* NSString+Terrestrial_String.m */; };
 		79D676B71BA9B02A0095F4B5 /* Terrestrial.h in Headers */ = {isa = PBXBuildFile; fileRef = 79D676B61BA9B02A0095F4B5 /* Terrestrial.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,16 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		791981041C2C258100CBA74B /* CameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraView.h; sourceTree = "<group>"; };
-		791981051C2C258100CBA74B /* CameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraView.m; sourceTree = "<group>"; };
-		7919810D1C2C27C400CBA74B /* SubviewsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubviewsHelper.h; sourceTree = "<group>"; };
-		7919810E1C2C27C400CBA74B /* SubviewsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubviewsHelper.m; sourceTree = "<group>"; };
-		791981151C2C408E00CBA74B /* UIViewController+TerrestrialAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TerrestrialAddition.m"; sourceTree = "<group>"; };
-		791981161C2C408E00CBA74B /* UIViewController+TerrestrialAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TerrestrialAddition.h"; sourceTree = "<group>"; };
-		791981191C2C44DE00CBA74B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		79663C911C502A0C002C9522 /* MixPanelTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixPanelTracker.h; sourceTree = "<group>"; };
-		79663C921C502A0C002C9522 /* MixPanelTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixPanelTracker.m; sourceTree = "<group>"; };
 		79663C951C5129C7002C9522 /* APITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APITests.m; sourceTree = "<group>"; };
+		796D34B71C61255B0080A23D /* TerrestrialPhotoshoot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TerrestrialPhotoshoot.framework; path = Frameworks/TerrestrialPhotoshoot.framework; sourceTree = SOURCE_ROOT; };
 		79A982BF1BBC964300C4C7A8 /* NSString+Terrestrial_String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Terrestrial_String.h"; sourceTree = "<group>"; };
 		79A982C01BBC964300C4C7A8 /* NSString+Terrestrial_String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Terrestrial_String.m"; sourceTree = "<group>"; };
 		79D676B11BA9B02A0095F4B5 /* Terrestrial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Terrestrial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				796D34B81C61255B0080A23D /* TerrestrialPhotoshoot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,25 +65,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7919810C1C2C272E00CBA74B /* Screenshots */ = {
-			isa = PBXGroup;
-			children = (
-				791981151C2C408E00CBA74B /* UIViewController+TerrestrialAddition.m */,
-				791981161C2C408E00CBA74B /* UIViewController+TerrestrialAddition.h */,
-				7919810D1C2C27C400CBA74B /* SubviewsHelper.h */,
-				7919810E1C2C27C400CBA74B /* SubviewsHelper.m */,
-				791981041C2C258100CBA74B /* CameraView.h */,
-				791981051C2C258100CBA74B /* CameraView.m */,
-				79663C911C502A0C002C9522 /* MixPanelTracker.h */,
-				79663C921C502A0C002C9522 /* MixPanelTracker.m */,
-			);
-			name = Screenshots;
-			sourceTree = "<group>";
-		};
 		79D676A71BA9B02A0095F4B5 = {
 			isa = PBXGroup;
 			children = (
-				791981191C2C44DE00CBA74B /* UIKit.framework */,
 				79D676B31BA9B02A0095F4B5 /* Terrestrial */,
 				79D676C01BA9B02B0095F4B5 /* TerrestrialTests */,
 				79D676B21BA9B02A0095F4B5 /* Products */,
@@ -116,7 +86,7 @@
 		79D676B31BA9B02A0095F4B5 /* Terrestrial */ = {
 			isa = PBXGroup;
 			children = (
-				7919810C1C2C272E00CBA74B /* Screenshots */,
+				796D34B71C61255B0080A23D /* TerrestrialPhotoshoot.framework */,
 				79F8008B1BF3766100A69642 /* TerrestrialUICategoryAdditions.h */,
 				79F8008C1BF3766100A69642 /* TerrestrialUICategoryAdditions.m */,
 				79D676B61BA9B02A0095F4B5 /* Terrestrial.h */,
@@ -161,12 +131,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7919810F1C2C27C400CBA74B /* SubviewsHelper.h in Headers */,
-				791981181C2C408E00CBA74B /* UIViewController+TerrestrialAddition.h in Headers */,
 				79D676B71BA9B02A0095F4B5 /* Terrestrial.h in Headers */,
 				79F8008D1BF3766100A69642 /* TerrestrialUICategoryAdditions.h in Headers */,
-				791981061C2C258100CBA74B /* CameraView.h in Headers */,
-				79663C931C502A0D002C9522 /* MixPanelTracker.h in Headers */,
 				79A982C11BBC964300C4C7A8 /* NSString+Terrestrial_String.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,7 +148,6 @@
 				79D676AD1BA9B02A0095F4B5 /* Frameworks */,
 				79D676AE1BA9B02A0095F4B5 /* Headers */,
 				79D676AF1BA9B02A0095F4B5 /* Resources */,
-				79663C8B1C4B1248002C9522 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -265,34 +230,13 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		79663C8B1C4B1248002C9522 /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\n\n# Constants\nSF_TARGET_NAME=${PROJECT_NAME}\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Take build target\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\necho \"Please choose iPhone simulator as the build target.\"\nexit 1\nfi\n\nIPHONE_DEVICE_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos\n\n# Build the other (non-simulator) platform\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk iphoneos BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" CONFIGURATION_BUILD_DIR=\"${IPHONE_DEVICE_BUILD_DIR}/arm64\" SYMROOT=\"${SYMROOT}\" ARCHS='arm64' VALID_ARCHS='arm64' $ACTION\n\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk iphoneos BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\"  CONFIGURATION_BUILD_DIR=\"${IPHONE_DEVICE_BUILD_DIR}/armv7\" SYMROOT=\"${SYMROOT}\" ARCHS='armv7 armv7s' VALID_ARCHS='armv7 armv7s' $ACTION\n\n# Copy the framework structure to the universal folder (clean it first)\nrm -rf \"${UNIVERSAL_OUTPUTFOLDER}\"\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\"\n\n# Smash them together to combine all architectures\nlipo -create \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/arm64/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/armv7/${PROJECT_NAME}.framework/${PROJECT_NAME}\" -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\nrm -rf \"${PROJECT_DIR}/iOSFrameworkRepo/${PROJECT_NAME}.framework/\"\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}/iOSFrameworkRepo/${PROJECT_NAME}.framework\"\n\n# cp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"/Users/MrMambwe/Library/Mobile Documents/com~apple~CloudDocs/Terrestrial/Command Line Tool/Mac App/InspectionMadeEasy/Terrestrial/Framework/${PROJECT_NAME}.framework\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		79D676AC1BA9B02A0095F4B5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				791981171C2C408E00CBA74B /* UIViewController+TerrestrialAddition.m in Sources */,
 				79A982C21BBC964300C4C7A8 /* NSString+Terrestrial_String.m in Sources */,
-				791981071C2C258100CBA74B /* CameraView.m in Sources */,
 				79F8008E1BF3766100A69642 /* TerrestrialUICategoryAdditions.m in Sources */,
-				791981101C2C27C400CBA74B /* SubviewsHelper.m in Sources */,
-				79663C941C502A0D002C9522 /* MixPanelTracker.m in Sources */,
 				79D676CE1BA9B0530095F4B5 /* Terrestrial.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +376,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Terrestrial",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = Terrestrial/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -463,6 +408,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Terrestrial",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = Terrestrial/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
