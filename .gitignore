@@ -1,6 +1,7 @@
 Output/
 _Archive/
 deploy_framework.sh
+deploy_framework_staging.sh
 
 # Created by https://www.gitignore.io/api/osx,xcode
 
