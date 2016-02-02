@@ -24,8 +24,8 @@
         
     }
     
-    
-    return [[Terrestrial sharedInstance] stringForKey:self andContext:@""];
+    return [[NSBundle mainBundle] localizedStringForKey:self value:@"" table:nil];
+    //return [[Terrestrial sharedInstance] stringForKey:self andContext:@""];
     
 }
 
@@ -39,7 +39,8 @@
         
     }
     
-    return [[Terrestrial sharedInstance] stringForKey:self andContext:context];
+    return [[NSBundle mainBundle] localizedStringForKey:self value:@"" table:nil];
+    //return [[Terrestrial sharedInstance] stringForKey:self andContext:context];
     
 }
 
@@ -58,7 +59,9 @@
         
     }
     
-    return [[Terrestrial sharedInstance] appStringForID: self];
+    return [[NSBundle mainBundle] localizedStringForKey:self value:@"" table:nil];
+    
+    //return [[Terrestrial sharedInstance] appStringForID: self];
     
 }
 
