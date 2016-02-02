@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Terrestrial"
-  s.version          = "0.2.14"
+  s.version          = "0.2.15"
   s.summary          = "Translate an entire app with just 3 commands"
 
 # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ This cocoapod allows you to quickly get your app localized.
   s.homepage         = "https://terrestrial.io"
   s.license          = 'MIT'
   s.author           = { "Joe" => "joe@terrestrial.io" }
-  s.source           = { :git => "https://github.com/terrestrial-io/iOSFrameworkRepo.git", :branch => 'staging' }
+  s.source           = { :git => "https://github.com/terrestrial-io/iOSFrameworkRepo.git", :tag => s.version.to_s }
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
