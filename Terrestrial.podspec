@@ -25,13 +25,13 @@ This cocoapod allows you to quickly get your app localized.
   s.homepage         = "https://terrestrial.io"
   s.license          = 'MIT'
   s.author           = { "Joe" => "joe@terrestrial.io" }
-  s.source           = { :git => "https://github.com/terrestrial-io/iOSFrameworkRepo.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/terrestrial-io/iOSFrameworkRepo.git", :branch => 'BananaSplit' }
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
   s.public_header_files = 'Terrestrial/*.{h}'
-  
+
   s.source_files = 'Terrestrial/*.{h,m}'
   s.ios.vendored_frameworks = "Frameworks/TerrestrialPhotoshoot.framework"
 
