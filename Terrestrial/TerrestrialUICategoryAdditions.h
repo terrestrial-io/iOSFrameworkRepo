@@ -13,6 +13,7 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable BOOL Terrestrial;
 @property (nonatomic) IBInspectable NSString *contextInfo;
 @property (nonatomic) IBInspectable NSString *baseStringID;
+
 @end
 
 @interface UIButton (TerrestrialButton)
@@ -28,9 +29,11 @@ IB_DESIGNABLE
 @end
 
 @interface UITextView (TerrestrialTextView)
+
 @property (nonatomic) IBInspectable BOOL Terrestrial;
 @property (nonatomic) IBInspectable NSString *contextInfo;
 @property (nonatomic) IBInspectable NSString *baseStringID;
+
 @end
 
 @interface UIBarButtonItem (TerrestrialBarButtonItem)

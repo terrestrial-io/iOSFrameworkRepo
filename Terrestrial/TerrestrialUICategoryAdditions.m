@@ -14,6 +14,10 @@
 
 @implementation UILabel (TerrestrialLabel)
 
+@dynamic baseStringID;
+@dynamic Terrestrial;
+@dynamic contextInfo;
+
 
 - (void)setContextInfo:(NSString *)contextInfo {
     
@@ -42,6 +46,11 @@
 
 @implementation UIButton (TerrestrialButton)
 
+@dynamic baseStringID;
+@dynamic Terrestrial;
+@dynamic contextInfo;
+
+
 
 - (void)setContextInfo:(NSString *)contextInfo {
     
@@ -69,6 +78,11 @@
 @end
 
 @implementation UITextField (TerrestrialTextField)
+
+@dynamic baseStringID;
+@dynamic Terrestrial;
+@dynamic contextInfo;
+
 
 
 
@@ -105,6 +119,8 @@
 
 
 
+
+
 - (void)setContextInfo:(NSString *)contextInfo {
     
     if (![contextInfo isEqualToString:@""]) {
@@ -136,6 +152,11 @@
 @implementation UIBarButtonItem (TerrestrialBarButtonItem)
 
 
+@dynamic baseStringID;
+@dynamic Terrestrial;
+@dynamic contextInfo;
+
+
 
 
 - (void)setContextInfo:(NSString *)contextInfo {
@@ -164,6 +185,11 @@
 @end
 
 @implementation UINavigationItem (TerrestrialNavigationItem)
+
+@dynamic baseStringID;
+@dynamic Terrestrial;
+@dynamic contextInfo;
+
 
 
 - (void)setContextInfo:(NSString *)contextInfo {
@@ -194,6 +220,11 @@
 
 
 @implementation UIViewController (TerrestrialViewController)
+
+@dynamic baseStringID;
+@dynamic Terrestrial;
+@dynamic contextInfo;
+
 
 
 - (void)setContextInfo:(NSString *)contextInfo {

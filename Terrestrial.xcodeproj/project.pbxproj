@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		79663C961C5129C7002C9522 /* APITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79663C951C5129C7002C9522 /* APITests.m */; };
-		796D34B61C60F81F0080A23D /* TerrestrialPhotoshoot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796D34B51C60F81F0080A23D /* TerrestrialPhotoshoot.framework */; };
+		796D34B81C61255B0080A23D /* TerrestrialPhotoshoot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796D34B71C61255B0080A23D /* TerrestrialPhotoshoot.framework */; };
 		79A982C11BBC964300C4C7A8 /* NSString+Terrestrial_String.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A982BF1BBC964300C4C7A8 /* NSString+Terrestrial_String.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79A982C21BBC964300C4C7A8 /* NSString+Terrestrial_String.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A982C01BBC964300C4C7A8 /* NSString+Terrestrial_String.m */; };
 		79D676B71BA9B02A0095F4B5 /* Terrestrial.h in Headers */ = {isa = PBXBuildFile; fileRef = 79D676B61BA9B02A0095F4B5 /* Terrestrial.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -31,7 +31,7 @@
 
 /* Begin PBXFileReference section */
 		79663C951C5129C7002C9522 /* APITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APITests.m; sourceTree = "<group>"; };
-		796D34B51C60F81F0080A23D /* TerrestrialPhotoshoot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TerrestrialPhotoshoot.framework; sourceTree = "<group>"; };
+		796D34B71C61255B0080A23D /* TerrestrialPhotoshoot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TerrestrialPhotoshoot.framework; path = Frameworks/TerrestrialPhotoshoot.framework; sourceTree = SOURCE_ROOT; };
 		79A982BF1BBC964300C4C7A8 /* NSString+Terrestrial_String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Terrestrial_String.h"; sourceTree = "<group>"; };
 		79A982C01BBC964300C4C7A8 /* NSString+Terrestrial_String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Terrestrial_String.m"; sourceTree = "<group>"; };
 		79D676B11BA9B02A0095F4B5 /* Terrestrial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Terrestrial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				796D34B61C60F81F0080A23D /* TerrestrialPhotoshoot.framework in Frameworks */,
+				796D34B81C61255B0080A23D /* TerrestrialPhotoshoot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +86,7 @@
 		79D676B31BA9B02A0095F4B5 /* Terrestrial */ = {
 			isa = PBXGroup;
 			children = (
-				796D34B51C60F81F0080A23D /* TerrestrialPhotoshoot.framework */,
+				796D34B71C61255B0080A23D /* TerrestrialPhotoshoot.framework */,
 				79F8008B1BF3766100A69642 /* TerrestrialUICategoryAdditions.h */,
 				79F8008C1BF3766100A69642 /* TerrestrialUICategoryAdditions.m */,
 				79D676B61BA9B02A0095F4B5 /* Terrestrial.h */,
@@ -148,7 +148,6 @@
 				79D676AD1BA9B02A0095F4B5 /* Frameworks */,
 				79D676AE1BA9B02A0095F4B5 /* Headers */,
 				79D676AF1BA9B02A0095F4B5 /* Resources */,
-				79663C8B1C4B1248002C9522 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -230,23 +229,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		79663C8B1C4B1248002C9522 /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\n\n# Constants\nSF_TARGET_NAME=${PROJECT_NAME}\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Take build target\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\necho \"Please choose iPhone simulator as the build target.\"\nexit 1\nfi\n\nIPHONE_DEVICE_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos\n\n# Build the other (non-simulator) platform\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk iphoneos BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" CONFIGURATION_BUILD_DIR=\"${IPHONE_DEVICE_BUILD_DIR}/arm64\" SYMROOT=\"${SYMROOT}\" ARCHS='arm64' VALID_ARCHS='arm64' $ACTION\n\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk iphoneos BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\"  CONFIGURATION_BUILD_DIR=\"${IPHONE_DEVICE_BUILD_DIR}/armv7\" SYMROOT=\"${SYMROOT}\" ARCHS='armv7 armv7s' VALID_ARCHS='armv7 armv7s' $ACTION\n\n# Copy the framework structure to the universal folder (clean it first)\nrm -rf \"${UNIVERSAL_OUTPUTFOLDER}\"\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\"\n\n# Smash them together to combine all architectures\nlipo -create \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/arm64/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/armv7/${PROJECT_NAME}.framework/${PROJECT_NAME}\" -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n# rm -rf \"${PROJECT_DIR}/iOSFrameworkRepo/${PROJECT_NAME}.framework/\"\n\n# cp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}/iOSFrameworkRepo/${PROJECT_NAME}.framework\"\n\n# cp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"/Users/MrMambwe/Library/Mobile Documents/com~apple~CloudDocs/Terrestrial/Command Line Tool/Mac App/InspectionMadeEasy/Terrestrial/Framework/${PROJECT_NAME}.framework\"\n\n\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		79D676AC1BA9B02A0095F4B5 /* Sources */ = {
@@ -394,6 +376,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Terrestrial",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = Terrestrial/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -425,6 +408,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Terrestrial",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = Terrestrial/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

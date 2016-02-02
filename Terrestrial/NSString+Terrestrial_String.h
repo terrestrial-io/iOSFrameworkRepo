@@ -18,7 +18,7 @@
 - (NSString *)dontTranslate;
 
 
-@property (strong, nonatomic) NSString *terrestrialContextInfo;
+@property (strong, nonatomic, readonly) NSString *terrestrialContextInfo;
 
 
 @end

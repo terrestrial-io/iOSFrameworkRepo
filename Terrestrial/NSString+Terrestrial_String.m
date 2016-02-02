@@ -13,6 +13,9 @@
 
 @implementation NSString (Terrestrial_String)
 
+@dynamic terrestrialContextInfo;
+
+
 -(NSString *)translated {
     
     if ([[TerrestrialPhotoshoot sharedInstance] inScreenshotMode]) {

@@ -831,7 +831,7 @@ NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInt
     
 }
 
-
+/*
 
 - (void) testPluralFunction {
     
@@ -855,6 +855,8 @@ NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInt
     
     
 }
+ 
+ */
 
 
 

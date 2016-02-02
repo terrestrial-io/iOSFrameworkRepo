@@ -66,10 +66,13 @@ FOUNDATION_EXPORT const unsigned char TerrestrialVersionString[];
 
 /*** Pluralisation helper functions ***/
 
+/*
 
 + (NSString *) pluralStringWithCount: (int)count zero:(NSString *)zeroString context: (NSString *) contextString;
 
 + (NSString *) pluralStringWithCount: (int)count zero:(NSString *)zeroString one:(NSString *)zeroString context: (NSString *) contextString;
+
+
 
 + (NSString *) pluralStringWithCount: (int)count zero:(NSString *)zeroString one:(NSString *)oneString two:(NSString *)twoString context: (NSString *) contextString;
 
@@ -106,7 +109,7 @@ FOUNDATION_EXPORT const unsigned char TerrestrialVersionString[];
                                other:(NSString *)otherString
                              context: (NSString *) contextString;
 
-
+*/
 
 
 @end
