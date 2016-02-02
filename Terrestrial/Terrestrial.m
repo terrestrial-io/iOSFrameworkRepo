@@ -7,7 +7,13 @@
 //
 
 #import "Terrestrial.h"
-#import "CameraView.h"
+
+static NSString * const trstlZeroRule = @"zero";
+static NSString * const trstlOneRule = @"one";
+static NSString * const trstlTwoRule = @"two";
+static NSString * const trstlFewRule = @"few";
+static NSString * const trstlManyRule = @"many";
+static NSString * const trstlOtherRule = @"other";
 
 @implementation Terrestrial
 
@@ -17,14 +23,13 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
-        [sharedInstance detectScreenshotMode];
     });
     return sharedInstance;
 }
 
 - (void) loadTranslationFile {
     
-     NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
+    NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
     
     
     if (!appStrings) {
@@ -32,7 +37,7 @@
         appStrings = [[NSArray alloc] init];
         
         NSString *appStringsPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"BaseStrings.json"]];
-    
+        
         
         if ([[NSFileManager defaultManager] fileExistsAtPath:appStringsPath]) {
             
@@ -73,9 +78,6 @@
         NSString *translationsFolder = [bundlePath stringByAppendingPathComponent:@"Translations"];
         
         NSString *localeFilePath = [translationsFolder stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json",localeToShow]];
-        
-        
-        // NSLog(@"File to get: %@",localeFilePath);
         
         
         
@@ -122,7 +124,7 @@
         
     }
     
-
+    
     
     
 }
@@ -140,17 +142,17 @@
     
     [self loadTranslationFile];
     
-
+    
     NSString *type = @"default";
     
     
     NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"(SELF.string ==[cd] %@) AND (SELF.context ==[cd] %@)",stringToTranslate ,contextString,type];
     
-   NSArray* filteredArray = [retrievedStrings filteredArrayUsingPredicate:bPredicate];
-
+    NSArray* filteredArray = [retrievedStrings filteredArrayUsingPredicate:bPredicate];
+    
     
     NSString *translatedString;
-
+    
     
     if ([filteredArray count] > 0 ) {
         
@@ -160,28 +162,28 @@
         translatedString = [stringDict objectForKey:@"translation"];
         
         //NSlog(@"Translated string: %@", translatedString);
-
-       
+        
+        
     }
     
     if (translatedString != nil){
-   
+        
         return translatedString;
-    
+        
     } else {
-    
+        
         return stringToTranslate;
-    
+        
     }
     
-
+    
     
 }
 
 - (NSString *) stringForID: (NSString *) stringToTranslate {
     
     [self loadTranslationFile];
-
+    
     
     NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"(SELF.id ==[cd] %@)",stringToTranslate];
     
@@ -207,12 +209,12 @@
         
     } else {
         
-           return stringToTranslate;
-           
-       
+        return stringToTranslate;
+        
+        
         
     }
-
+    
     
 }
 
@@ -231,7 +233,7 @@
         
         if ([filteredArray count] > 0 ) {
             
-        returnString = [filteredArray[0] objectForKey:@"string"];
+            returnString = [filteredArray[0] objectForKey:@"string"];
             
         }
         
@@ -243,17 +245,17 @@
     return returnString;
     
 }
- 
+
 
 
 - (NSString *) stringForCount:(float)count pluralDict: (NSDictionary *)pluralDict andContext:(NSString *)contextString {
     
-
+    
     
     NSString *languageCode = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
     
     NSString *lookupText = [pluralDict objectForKey:trstlOneRule];
-
+    
     NSArray *lookupArray =  trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(count, lookupText, languageCode);
     
     
@@ -263,7 +265,7 @@
     
     
     NSString* localeToShow;
-
+    
     manualLocale = _currentLanguageCode;
     
     if (!manualLocale ) {
@@ -321,11 +323,15 @@
 }
 
 + (void) setCurrentLanguageTo: (NSString *) lang {
-
+    
     [[Terrestrial sharedInstance] setCurrentLanguageCode:lang];
     
 }
 
+
+
+
+/*** Pluralisation rules ***/
 
 
 static NSString * trstlArabicPluralRuleForCount(NSUInteger count) {
@@ -736,14 +742,6 @@ static NSString * trstlVietnamesePluralRuleForCount(NSUInteger count) {
     return trstlOtherRule;
 }
 
-/*
-
-NSString * trstlLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, NSString *singular) {
-    NSString *languageCode = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
-    return trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(count, singular, languageCode);
-}
- 
-*/
 
 NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInteger count, NSString *singular, NSString *languageCode) {
     
@@ -834,239 +832,15 @@ NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInt
 }
 
 
-+ (NSDictionary *) dictionaryWithContentsOfPlist:(NSString *)filePath {
-    
-    
-    NSError *error;
-    NSString *fileString =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
-    
-    
-    
-    NSMutableArray * plistArray = (NSMutableArray *)[fileString componentsSeparatedByString:@"\n"];
-    
-    
-    //NSlog(@"Plist Array: %@", plistArray);
-    
-    
-    
-    for (int i = 0; i < [plistArray count]; i++) {
-        
-        
-        NSMutableString *searchedString = [plistArray objectAtIndex:i];
-        NSError* error = nil;
-        
-        NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:@"(<string.*>)(.*?)</string>" options:0 error:&error];
-       
-        NSArray* matches = [regex matchesInString:searchedString options:0 range:NSMakeRange(0, [searchedString length])];
-        
-        
-        for ( NSTextCheckingResult* match in matches )
-        
-        {
-          
-            NSString* matchText = [searchedString substringWithRange:[match range]];
-            
-            //NSlog(@"match: %@", matchText);
-            
-            //NSString *newString = [regex2 stringByReplacingMatchesInString:matchText options:0 range:NSMakeRange(0, [matchText length]) withTemplate:[[Terrestrial sharedInstance] stringForKey:stringToTranslate andContext:@""]];
-            
-           
-            
-            //NSString *newString = [regex2 stringByReplacingMatchesInString:matchText options:0 range:NSMakeRange(0, [matchText length]) withTemplate:[[Terrestrial sharedInstance] stringForKey:stringToTranslate andContext:@""]];
-            
-            NSRange matchRange = [match rangeAtIndex:2];
-            
-            NSString *stringToTranslate = [searchedString substringWithRange:matchRange];
-            
-            
-            
-            
-            NSRegularExpression* regex2 = [NSRegularExpression regularExpressionWithPattern:@" terrestrialContext=\"(.*[^\"])\"" options:0 error:&error];
-            
-            
-            NSString *firstGroupCaptured = [searchedString substringWithRange:[match rangeAtIndex:1]];
-            
-            NSTextCheckingResult *contextMatch = [regex2 firstMatchInString:firstGroupCaptured options:0 range:NSMakeRange(0, [firstGroupCaptured length])];
-            
-            NSRange contextMatchRange = [contextMatch rangeAtIndex:1];
-            
-            NSString *contextInfoString = [firstGroupCaptured substringWithRange:contextMatchRange];
-            
 
-        
-            //NSlog(@"STRING TO TRANSLATE: %@", stringToTranslate);
-            //NSlog(@"CONTEXT INFO STRING: %@", contextInfoString);
-            
-       
-        
-        }
-        
-        
-        /*
-        
-        // Pull out string tags
-        
-        NSString *stringTagRegexp = @"(<string.*>).*?(</string>)";
-        
-   
-        
-        NSString *newString = [regex stringByReplacingMatchesInString:oldString options:0 range:NSMakeRange(0, [oldString length]) withTemplate:@”21st December”];
-
-        
-        //NSString *someRegexp = @"terrestrialContext=\".* +[^\"]+\"";
-        
-        NSPredicate *myTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", someRegexp];
-        
-        NSString *fileLine = [plistArray objectAtIndex:i];
-        
-        if ([myTest evaluateWithObject: fileLine]){
-           
-            
-    
-            
-        }
-         
-         */
-        
-        
-    }
-    
-    
-    NSData* data = [fileString dataUsingEncoding:NSUTF8StringEncoding];
-    
-    //NSlog(@"FILE STRING: %@", fileString);
-    
-    NSDictionary *plistFile = [NSPropertyListSerialization propertyListWithData:data
-                                                          options:0
-                                                           format:NULL
-                                                            error:&error];
-    
-    
-    return plistFile;
-}
-
-
-/***** Screenshots Code *****/
-
-
-
-
-- (void) detectScreenshotMode {
-    
-    
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"TerrestrialScreenShotMode"]) {
-        
-        if (!_inScreenshotMode) {
-            
-        _inScreenshotMode = true;
-            
-        }
-        
-        
-    }
-    
-    
-}
-
-
-
-- (NSString *) storeScannedStringDict:(NSDictionary *)stringsDict {
-    
-    if (!_scannedStrings) {
-        
-        _scannedStrings = [[NSMutableArray alloc] init];
-    
-    }
-    
-    
-    
-    NSString *string = [stringsDict objectForKey:@"string"];
-    
-    NSString *replacedString = [string stringByReplacingOccurrencesOfString:@"%@" withString:@"(.*)"];
-    
-    
-    NSMutableDictionary *newDict = [stringsDict mutableCopy];
-    
-    [newDict setValue:replacedString forKey:@"string"];
-    
-    
-    if (![self array:_scannedStrings containsStringDict:(NSDictionary *)newDict]) {
-        
-        
-        [_scannedStrings addObject:newDict];
-        
-        return string;
-
-        
-    } else {
-        
-       
-        NSMutableDictionary *mutable = newDict;
-        
-        
-        NSString *markedString = [NSString stringWithFormat:@"\u00a0%@\u00a0",[mutable objectForKey:@"string"]];
-
-        
-        [mutable setValue:markedString forKey:@"string"];
-        
-        [_scannedStrings addObject:(NSDictionary *) mutable];
-        
-        return [NSString stringWithFormat:@"\u00a0%@\u00a0",string];
-        
-        
-    }
-    
-    //NSLog(@"BUILDING ARRAY: %@",_scannedStrings);
-    
-    
-    
-    
-    
-}
-
-
-
-- (NSMutableArray *) getScannedStrings {
-    
-    return  _scannedStrings;
-    
-}
-
-
-
--(BOOL) array: (NSArray *)array containsStringDict:(NSDictionary *)stringsDict
-{
-    
-    
-    NSPredicate *aPredicate = [NSPredicate predicateWithFormat:@"(SELF.string ==[cd] %@) AND (SELF.context ==[cd] %@)",[stringsDict objectForKey:@"string"] ,[stringsDict objectForKey:@"context"]];
-    
-    NSArray* filteredArray = [array filteredArrayUsingPredicate:aPredicate];
-    
-    
-    if ([filteredArray count]){
-        return YES;
-    }else{
-       return NO;
-    }
-    
-
-    
-}
-
-
-
-
-
-
-
-- (void) test {
+- (void) testPluralFunction {
     
     
     NSString *string = translatedPluralString(5,
                                               (@{@"zero": @"There are no offers left.",
                                                  @"one":@"There is only one offer left",
                                                  @"other":@"There are %d coins left" }),
-                                                 @"This shows the number of discount offers");
+                                              @"This shows the number of discount offers");
     
     int offerNumber = 20;
     
@@ -1074,13 +848,15 @@ NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInt
     
     NSString *pluralString = [Terrestrial pluralStringWithCount:offerNumber
                                                              id:@"offer_plural"
-                                                           zero :@"There are no offers left"
-                                                            one :@"There is only one offer left"
+                                                          zero :@"There are no offers left"
+                                                           one :@"There is only one offer left"
                                                           other:@"There are %d offers left"
                                                         context:@"This is my context"];
     
     
 }
+
+
 
 - (NSString *) retrievePluralRuleForCount: (NSUInteger) count andLanguageCode: (NSString *)languageCode {
     
@@ -1174,7 +950,7 @@ NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInt
                                other:(NSString *)otherString
                              context: (NSString *) contextString {
     
-   
+    
     
     NSString *translatedString = [[Terrestrial sharedInstance] pluralStringLookupWithId: idString andCount:count];
     
@@ -1190,16 +966,16 @@ NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInt
         if (count == 1) {
             
             return  [NSString stringWithFormat:oneString,count];
-        
+            
         } else {
-    
+            
             return [NSString stringWithFormat:otherString,count];;
             
         }
         
         
     }
-   
+    
     
 }
 
@@ -1211,47 +987,47 @@ NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInt
     // Retrieve pluralisation rule from count & language code
     NSString *languageCode = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
     
-    NSLog(@"BOOM 1");
+    //NSLog(@"BOOM 1");
     
     NSString *retrievedRule = [[Terrestrial sharedInstance] retrievePluralRuleForCount:count andLanguageCode:languageCode];
-     NSLog(@"BOOM 2");
+    //NSLog(@"BOOM 2");
     
     
     if (retrievedRule) {
-
-         NSLog(@"BOOM 3");
-    // Perform lookup using plural id
-    
-    NSString *type = @"plural_string";
-    
-    NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"(SELF.plural_string.id ==[cd] %@) AND (SELF.type ==[cd] %@)",idString ,type];
-    
         
-    NSArray* filteredArray = [[Terrestrial sharedInstance] filterTranslationsArrayWithPredicate:bPredicate];
-    
-     NSLog(@"BOOM 4");
+        //NSLog(@"BOOM 3");
+        // Perform lookup using plural id
         
-    NSString *translatedString;
-    NSDictionary *translatedObject;
-    
-    
-    if ([filteredArray count] > 0 ) {
+        NSString *type = @"plural_string";
+        
+        NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"(SELF.plural_string.id ==[cd] %@) AND (SELF.type ==[cd] %@)",idString ,type];
         
         
-        NSDictionary * stringDict = [filteredArray objectAtIndex:0];
+        NSArray* filteredArray = [[Terrestrial sharedInstance] filterTranslationsArrayWithPredicate:bPredicate];
         
-        translatedObject = [stringDict objectForKey:@"translation"];
+        //NSLog(@"BOOM 4");
         
-        translatedString = [translatedObject objectForKey:retrievedRule];
-    }
-    
-    
-   
-    NSLog(@"BOOM 5");
+        NSString *translatedString;
+        NSDictionary *translatedObject;
+        
+        
+        if ([filteredArray count] > 0 ) {
+            
+            
+            NSDictionary * stringDict = [filteredArray objectAtIndex:0];
+            
+            translatedObject = [stringDict objectForKey:@"translation"];
+            
+            translatedString = [translatedObject objectForKey:retrievedRule];
+        }
+        
+        
+        
+        //NSLog(@"BOOM 5");
         if(translatedString) { return [NSString stringWithFormat:translatedString,count];};
         
-        NSLog(@"BOOM 6");
-
+        //NSLog(@"BOOM 6");
+        
         return nil;
         
     } else {
@@ -1262,6 +1038,10 @@ NSArray * trstlLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInt
     
     
 }
+
+
+
+
 
 
 
