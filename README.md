@@ -7,7 +7,7 @@
 
 App translations that will always fit your UI.
 
-Give translators Live UI previews of their translations inside you UI.
+Give translators Live UI previews of their translations inside your app UI.
 
 Join the beta at [terrestrial.io](http://terrestrial.io) 
 
