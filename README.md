@@ -5,13 +5,17 @@
 [![License](https://img.shields.io/cocoapods/l/Terrestrial.svg?style=flat)](http://cocoapods.org/pods/Terrestrial)
 [![Platform](https://img.shields.io/cocoapods/p/Terrestrial.svg?style=flat)](http://cocoapods.org/pods/Terrestrial)
 
-## Usage
+Localize an entire app with just 3 commands 
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+Join the beta at [terrestrial.io](http://terrestrial.io) 
 
 ## Requirements
 
+This is a dynamic framework so requires a development target of at least iOS 8.0
+
 ## Installation
+
+### Cocoapods
 
 Terrestrial is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
@@ -20,9 +24,19 @@ it, simply add the following line to your Podfile:
 pod "Terrestrial"
 ```
 
+### Carthage
+
+Terrestrial is available through [Carthage](https://github.com/Carthage/Carthage). To install
+it, simply add the following line to your Cartfile:
+
+```ruby
+github "terrestrial-io/iOSFrameworkRepo"
+```
+Note that the framework search path will be `$(PROJECT_DIR)/Carthage/Checkouts/iOSFramework/`
+
 ## Author
 
-Joe, joe@terrestrial.io
+[Terrestrial Ltd](http://terrestrial.io)
 
 ## License
 
