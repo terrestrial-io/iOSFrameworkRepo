@@ -33,16 +33,16 @@ static NSString * const screenshotLaunchArgument = @"TerrestrialScreenShotMode";
 + (NSString *) detectStringForKey:(NSString *)key andTable:(NSString *)tbl inBundle:(NSBundle *)bundle andDefaultValue:(NSString *)val;
 
 #define NSLocalizedString(key, comment) \
-[Terrestrial detectStringForKey:key];
+[TerrestrialPhotoshoot detectStringForKey:key];
 
 #define NSLocalizedStringFromTable(key, tbl, comment) \
-[Terrestrial  detectStringForKey:key andTable:tbl];
+[TerrestrialPhotoshoot  detectStringForKey:key andTable:tbl];
 
 #define NSLocalizedStringFromTableInBundle(key, tbl, bundle, comment) \
-[Terrestrial detectStringForKey:key andTable:tbl inBundle:bundle];
+[TerrestrialPhotoshoot detectStringForKey:key andTable:tbl inBundle:bundle];
 
 #define NSLocalizedStringWithDefaultValue(key, tbl, bundle, val, comment) \
-[Terrestrial detectStringForKey:key andTable:tbl inBundle:bundle andDefaultValue:val];
+[TerrestrialPhotoshoot detectStringForKey:key andTable:tbl inBundle:bundle andDefaultValue:val];
 
 
 

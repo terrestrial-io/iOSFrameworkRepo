@@ -1,6 +1,0 @@
-framework module TerrestrialPhotoshoot {
-  umbrella header "TerrestrialPhotoshoot.h"
-
-  export *
-  module * { export * }
-}
