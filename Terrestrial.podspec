@@ -30,6 +30,7 @@ This cocoapod allows you to quickly get your app localized.
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.ios.vendored_frameworks = "Terrestrial.framework"
+  s.source_files = 'Terrestrial/**/*'
+  s.ios.vendored_frameworks = "Terrestrial/TerrestrialPhotoshoot.framework"
 
 end
