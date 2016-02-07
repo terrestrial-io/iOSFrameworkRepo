@@ -14,18 +14,11 @@
 
 @implementation UILabel (TerrestrialLabel)
 
-@dynamic baseStringID;
+@dynamic identifier;
 @dynamic Terrestrial;
-@dynamic contextInfo;
 
 
-- (void)setContextInfo:(NSString *)contextInfo {
-    
-    if (![contextInfo isEqualToString:@""]) {
-        
-        [self setText:[self.text translatedWithContext:contextInfo]];
-        
-    }
+- (void)setComment:(NSString *)comment {
     
     
 }
@@ -46,22 +39,9 @@
 
 @implementation UIButton (TerrestrialButton)
 
-@dynamic baseStringID;
+@dynamic identifier;
 @dynamic Terrestrial;
-@dynamic contextInfo;
 
-
-
-- (void)setContextInfo:(NSString *)contextInfo {
-    
-    if (![contextInfo isEqualToString:@""]) {
-        
-        [self setTitle:[self.titleLabel.text translatedWithContext:contextInfo] forState:UIControlStateNormal];
-        
-    }
-    
-    
-}
 
 
 - (void)setTerrestrial:(BOOL)Terrestrial {
@@ -79,24 +59,8 @@
 
 @implementation UITextField (TerrestrialTextField)
 
-@dynamic baseStringID;
+@dynamic identifier;
 @dynamic Terrestrial;
-@dynamic contextInfo;
-
-
-
-
-- (void)setContextInfo:(NSString *)contextInfo {
-    
-    if (![contextInfo isEqualToString:@""]) {
-        
-        [self setText:[self.text translatedWithContext:contextInfo]];
-        [self setPlaceholder:[self.placeholder translatedWithContext:contextInfo]];
-        
-    }
-    
-    
-}
 
 
 - (void)setTerrestrial:(BOOL)Terrestrial {
@@ -121,11 +85,11 @@
 
 
 
-- (void)setContextInfo:(NSString *)contextInfo {
+- (void)setComment:(NSString *)comment {
     
-    if (![contextInfo isEqualToString:@""]) {
+    if (![comment isEqualToString:@""]) {
         
-        [self setText:[self.text translatedWithContext:contextInfo]];
+        [self setText:[self.text translatedWithContext:comment]];
 
         
     }
@@ -152,23 +116,8 @@
 @implementation UIBarButtonItem (TerrestrialBarButtonItem)
 
 
-@dynamic baseStringID;
+@dynamic identifier;
 @dynamic Terrestrial;
-@dynamic contextInfo;
-
-
-
-
-- (void)setContextInfo:(NSString *)contextInfo {
-    
-    if (![contextInfo isEqualToString:@""]) {
-        
-        [self setTitle:[self.title translatedWithContext:contextInfo]];
-        
-    }
-    
-    
-}
 
 
 - (void)setTerrestrial:(BOOL)Terrestrial {
@@ -186,23 +135,8 @@
 
 @implementation UINavigationItem (TerrestrialNavigationItem)
 
-@dynamic baseStringID;
+@dynamic identifier;
 @dynamic Terrestrial;
-@dynamic contextInfo;
-
-
-
-- (void)setContextInfo:(NSString *)contextInfo {
-    
-    if (![contextInfo isEqualToString:@""]) {
-        
-        [self setTitle:[self.title translatedWithContext:contextInfo]];
-        [self setPrompt:[self.prompt translatedWithContext:contextInfo]];
-        
-    }
-    
-    
-}
 
 
 - (void)setTerrestrial:(BOOL)Terrestrial {
@@ -221,22 +155,9 @@
 
 @implementation UIViewController (TerrestrialViewController)
 
-@dynamic baseStringID;
+@dynamic identifier;
 @dynamic Terrestrial;
-@dynamic contextInfo;
 
-
-
-- (void)setContextInfo:(NSString *)contextInfo {
-    
-    if (![contextInfo isEqualToString:@""]) {
-        
-        [self setTitle:[self.title translatedWithContext:contextInfo]];
-        
-    }
-    
-    
-}
 
 
 - (void)setTerrestrial:(BOOL)Terrestrial {
