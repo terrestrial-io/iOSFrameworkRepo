@@ -11,45 +11,38 @@ IB_DESIGNABLE
 
 @interface UILabel (TerrestrialLabel)
 @property (nonatomic) IBInspectable BOOL Terrestrial;
-@property (nonatomic) IBInspectable NSString *contextInfo;
-@property (nonatomic) IBInspectable NSString *baseStringID;
+@property (nonatomic) IBInspectable NSString *identifier;
 
 @end
 
 @interface UIButton (TerrestrialButton)
 @property (nonatomic) IBInspectable BOOL Terrestrial;
-@property (nonatomic) IBInspectable NSString *contextInfo;
-@property (nonatomic) IBInspectable NSString *baseStringID;
+@property (nonatomic) IBInspectable NSString *identifier;
 @end
 
 @interface UITextField (TerrestrialTextField)
 @property (nonatomic) IBInspectable BOOL Terrestrial;
-@property (nonatomic) IBInspectable NSString *contextInfo;
-@property (nonatomic) IBInspectable NSString *baseStringID;
+@property (nonatomic) IBInspectable NSString *identifier;
 @end
 
 @interface UITextView (TerrestrialTextView)
 
 @property (nonatomic) IBInspectable BOOL Terrestrial;
-@property (nonatomic) IBInspectable NSString *contextInfo;
-@property (nonatomic) IBInspectable NSString *baseStringID;
+@property (nonatomic) IBInspectable NSString *identifier;
 
 @end
 
 @interface UIBarButtonItem (TerrestrialBarButtonItem)
 @property (nonatomic) IBInspectable BOOL Terrestrial;
-@property (nonatomic) IBInspectable NSString *contextInfo;
-@property (nonatomic) IBInspectable NSString *baseStringID;
+@property (nonatomic) IBInspectable NSString *identifier;
 @end
 
 @interface UINavigationItem (TerrestrialNavigationItem)
 @property (nonatomic) IBInspectable BOOL Terrestrial;
-@property (nonatomic) IBInspectable NSString *contextInfo;
-@property (nonatomic) IBInspectable NSString *baseStringID;
+@property (nonatomic) IBInspectable NSString *identifier;
 @end
 
 @interface UIViewController (TerrestrialViewController)
 @property (nonatomic) IBInspectable BOOL Terrestrial;
-@property (nonatomic) IBInspectable NSString *contextInfo;
-@property (nonatomic) IBInspectable NSString *baseStringID;
+@property (nonatomic) IBInspectable NSString *identifier;
 @end

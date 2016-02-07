@@ -17,10 +17,12 @@
 
 @implementation APITests
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
     
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    NSString *bundlePath = [[NSBundle bundleForClass:[self class]] resourcePath];
+    [NSBundle bundleWithPath:bundlePath];
 }
 
 - (void)tearDown {
@@ -38,17 +40,34 @@
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
     }];
+    
 }
 
-
+/*
 -(void) testStandardStringRetrieval {
     
     NSString *testString = @"abcdefghijklmnopqrstuvwxyz";
     NSString *retrievedString =  testString.translated;
     
-    NSString *expectedRetrievedString = @"abcdefghijklmnopqrstuvwxyz";
+    NSString *expectedRetrievedString = @"You have passed the test!";
     
-    XCTAssertEqualObjects(expectedRetrievedString, retrievedString, @"The string did not return the same strings when no matching translation was found");
+    XCTAssertEqualObjects(expectedRetrievedString, retrievedString, @"Did not return the string in the localizable.strings file");
     
 }
+
+
+-(void) testNSLocalizedStringRetrieval {
+    
+    NSString *testString = @"abcdefghijklmnopqrstuvwxyz";
+    NSString *retrievedString =  NSLocalizedString(testString,nil);
+    
+    NSString *expectedRetrievedString = @"You have passed the test!";
+    
+    NSLog(@"Retrieved String: %@", retrievedString);
+    
+    XCTAssertEqualObjects(expectedRetrievedString, retrievedString, @"Did not return the same strings when no matching translation was found");
+    
+}
+ */
+
 @end

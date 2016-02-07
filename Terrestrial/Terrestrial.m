@@ -27,6 +27,8 @@ static NSString * const trstlOtherRule = @"other";
     return sharedInstance;
 }
 
+
+
 - (void) loadTranslationFile {
     
     NSString *bundlePath = [[NSBundle mainBundle] resourcePath];

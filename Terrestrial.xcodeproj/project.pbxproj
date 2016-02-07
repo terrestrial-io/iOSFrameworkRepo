@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		79663C961C5129C7002C9522 /* APITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79663C951C5129C7002C9522 /* APITests.m */; };
-		796D34B81C61255B0080A23D /* TerrestrialPhotoshoot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796D34B71C61255B0080A23D /* TerrestrialPhotoshoot.framework */; };
+		796D34D61C626ED50080A23D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 796D34D41C626ED50080A23D /* Localizable.strings */; };
+		796D34D81C626F2D0080A23D /* TerrestrialPhotoshoot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796D34D71C626F2D0080A23D /* TerrestrialPhotoshoot.framework */; };
+		796D34D91C626FC40080A23D /* TerrestrialPhotoshoot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796D34D71C626F2D0080A23D /* TerrestrialPhotoshoot.framework */; };
+		796D34DC1C6273A00080A23D /* TerrestrialPhotoshoot.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 796D34D71C626F2D0080A23D /* TerrestrialPhotoshoot.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		79A982C11BBC964300C4C7A8 /* NSString+Terrestrial_String.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A982BF1BBC964300C4C7A8 /* NSString+Terrestrial_String.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79A982C21BBC964300C4C7A8 /* NSString+Terrestrial_String.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A982C01BBC964300C4C7A8 /* NSString+Terrestrial_String.m */; };
 		79D676B71BA9B02A0095F4B5 /* Terrestrial.h in Headers */ = {isa = PBXBuildFile; fileRef = 79D676B61BA9B02A0095F4B5 /* Terrestrial.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,9 +32,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		796D34DB1C6273930080A23D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				796D34DC1C6273A00080A23D /* TerrestrialPhotoshoot.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		79663C951C5129C7002C9522 /* APITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APITests.m; sourceTree = "<group>"; };
-		796D34B71C61255B0080A23D /* TerrestrialPhotoshoot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TerrestrialPhotoshoot.framework; path = Frameworks/TerrestrialPhotoshoot.framework; sourceTree = SOURCE_ROOT; };
+		796D34D51C626ED50080A23D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Localizable.strings; sourceTree = "<group>"; };
+		796D34D71C626F2D0080A23D /* TerrestrialPhotoshoot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TerrestrialPhotoshoot.framework; path = Frameworks/TerrestrialPhotoshoot.framework; sourceTree = SOURCE_ROOT; };
 		79A982BF1BBC964300C4C7A8 /* NSString+Terrestrial_String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Terrestrial_String.h"; sourceTree = "<group>"; };
 		79A982C01BBC964300C4C7A8 /* NSString+Terrestrial_String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Terrestrial_String.m"; sourceTree = "<group>"; };
 		79D676B11BA9B02A0095F4B5 /* Terrestrial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Terrestrial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				796D34B81C61255B0080A23D /* TerrestrialPhotoshoot.framework in Frameworks */,
+				796D34D81C626F2D0080A23D /* TerrestrialPhotoshoot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,12 +76,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				79D676BD1BA9B02B0095F4B5 /* Terrestrial.framework in Frameworks */,
+				796D34D91C626FC40080A23D /* TerrestrialPhotoshoot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		796D34D31C626ED50080A23D /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				796D34D41C626ED50080A23D /* Localizable.strings */,
+			);
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
 		79D676A71BA9B02A0095F4B5 = {
 			isa = PBXGroup;
 			children = (
@@ -86,7 +112,7 @@
 		79D676B31BA9B02A0095F4B5 /* Terrestrial */ = {
 			isa = PBXGroup;
 			children = (
-				796D34B71C61255B0080A23D /* TerrestrialPhotoshoot.framework */,
+				796D34D71C626F2D0080A23D /* TerrestrialPhotoshoot.framework */,
 				79F8008B1BF3766100A69642 /* TerrestrialUICategoryAdditions.h */,
 				79F8008C1BF3766100A69642 /* TerrestrialUICategoryAdditions.m */,
 				79D676B61BA9B02A0095F4B5 /* Terrestrial.h */,
@@ -119,6 +145,7 @@
 		79D676C11BA9B02B0095F4B5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				796D34D31C626ED50080A23D /* Base.lproj */,
 				79D676C21BA9B02B0095F4B5 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -165,6 +192,7 @@
 				79D676B81BA9B02B0095F4B5 /* Sources */,
 				79D676B91BA9B02B0095F4B5 /* Frameworks */,
 				79D676BA1BA9B02B0095F4B5 /* Resources */,
+				796D34DB1C6273930080A23D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -201,6 +229,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 79D676A71BA9B02A0095F4B5;
 			productRefGroup = 79D676B21BA9B02A0095F4B5 /* Products */;
@@ -225,6 +254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				796D34D61C626ED50080A23D /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +289,17 @@
 			targetProxy = 79D676BE1BA9B02B0095F4B5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		796D34D41C626ED50080A23D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				796D34D51C626ED50080A23D /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		79D676C51BA9B02B0095F4B5 /* Debug */ = {
@@ -431,6 +472,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -448,6 +490,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = TerrestrialTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
