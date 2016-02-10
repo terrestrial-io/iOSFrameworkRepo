@@ -24,7 +24,7 @@
         
     }
     
-    return [[NSBundle mainBundle] localizedStringForKey:self value:@"Localizable" table:nil];
+    return [[NSBundle mainBundle] localizedStringForKey:self value:@"" table:@"Localizable"];
     //return [[Terrestrial sharedInstance] stringForKey:self andContext:@""];
     
 }
@@ -39,7 +39,7 @@
         
     }
     
-    return [[NSBundle mainBundle] localizedStringForKey:self value:@"Localizable" table:nil];
+    return [[NSBundle mainBundle] localizedStringForKey:self value:@"" table:@"Localizable"];
     //return [[Terrestrial sharedInstance] stringForKey:self andContext:context];
     
 }
@@ -59,7 +59,7 @@
         
     }
     
-    return [[NSBundle mainBundle] localizedStringForKey:self value:@"Localizable" table:nil];
+    return [[NSBundle mainBundle] localizedStringForKey:self value:@"" table:@"Localizable"];
     
     //return [[Terrestrial sharedInstance] appStringForID: self];
     
