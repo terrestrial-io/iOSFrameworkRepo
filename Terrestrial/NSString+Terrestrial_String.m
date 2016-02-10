@@ -13,14 +13,14 @@
 
 @implementation NSString (Terrestrial_String)
 
-@dynamic terrestrialContextInfo;
-
 
 -(NSString *)translated {
     
     if ([[TerrestrialPhotoshoot sharedInstance] inScreenshotMode]) {
         
-        return  [[TerrestrialPhotoshoot sharedInstance] trackOnScreenString:self withKey:@""];
+         NSString *returnedString = [[NSBundle mainBundle] localizedStringForKey:self value:@"" table:@"Localizable"];
+        
+        return  [[TerrestrialPhotoshoot sharedInstance] trackOnScreenString:returnedString withKey:self];
         
     }
     
@@ -28,42 +28,24 @@
     //return [[Terrestrial sharedInstance] stringForKey:self andContext:@""];
     
 }
-
+/*
 
 -(NSString *)translatedWithContext: (NSString *) context {
     
     
     if ([[TerrestrialPhotoshoot sharedInstance] inScreenshotMode]) {
         
-        return  [[TerrestrialPhotoshoot sharedInstance] trackOnScreenString:self withKey:@""];
+        NSString *returnedString = [[NSBundle mainBundle] localizedStringForKey:self value:@"" table:@"Localizable"];
+        
+        return  [[TerrestrialPhotoshoot sharedInstance] trackOnScreenString:returnedString withKey:self];
         
     }
     
     return [[NSBundle mainBundle] localizedStringForKey:self value:@"" table:@"Localizable"];
     //return [[Terrestrial sharedInstance] stringForKey:self andContext:context];
     
-}
-
-
--(NSString *)dontTranslate {
-    
-    return self;
-    
-}
-
--(NSString *)translatedID {
-    
-    if ([[TerrestrialPhotoshoot sharedInstance] inScreenshotMode]) {
-        
-        return  [[TerrestrialPhotoshoot sharedInstance] trackOnScreenString:[[Terrestrial sharedInstance] appStringForID: self] withKey:self];
-        
-    }
-    
-    return [[NSBundle mainBundle] localizedStringForKey:self value:@"" table:@"Localizable"];
-    
-    //return [[Terrestrial sharedInstance] appStringForID: self];
-    
-}
+} 
+  */
 
 
 @end

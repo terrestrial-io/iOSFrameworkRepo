@@ -12,13 +12,6 @@
 
 
 @property (nonatomic, copy, readonly) NSString *translated;
-@property (nonatomic, copy, readonly) NSString *translatedID;
-
-- (NSString *)translatedWithContext: (NSString *) context;
-- (NSString *)dontTranslate;
-
-
-@property (strong, nonatomic, readonly) NSString *terrestrialContextInfo;
 
 
 @end
