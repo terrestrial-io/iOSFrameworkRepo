@@ -89,8 +89,7 @@
     
     if (![comment isEqualToString:@""]) {
         
-        [self setText:[self.text translatedWithContext:comment]];
-
+       // [self setText:[self.text translatedWithContext:comment]];
         
     }
     
