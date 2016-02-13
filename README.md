@@ -17,7 +17,7 @@ This is a dynamic framework so requires a development target of at least iOS 8.0
 
 ## Installation
 
-### Cocoapods
+### CocoaPods
 
 Terrestrial is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
