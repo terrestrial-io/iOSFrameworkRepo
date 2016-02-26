@@ -14,7 +14,7 @@
 
 @implementation UILabel (TerrestrialLabel)
 
-@dynamic identifier;
+@dynamic Identifier;
 @dynamic Terrestrial;
 
 
@@ -23,6 +23,11 @@
     
 }
 
+- (void)setIdentifier:(NSString *)theID {
+    
+        [self setText:theID.translated];
+    
+}
 
 - (void)setTerrestrial:(BOOL)Terrestrial {
     
@@ -39,10 +44,14 @@
 
 @implementation UIButton (TerrestrialButton)
 
-@dynamic identifier;
+@dynamic Identifier;
 @dynamic Terrestrial;
 
-
+- (void)setIdentifier:(NSString *)theID {
+    
+    [self setTitle:theID.translated forState:UIControlStateNormal];
+    
+}
 
 - (void)setTerrestrial:(BOOL)Terrestrial {
     
@@ -59,8 +68,15 @@
 
 @implementation UITextField (TerrestrialTextField)
 
-@dynamic identifier;
+@dynamic Identifier;
 @dynamic Terrestrial;
+
+
+- (void)setIdentifier:(NSString *)theID {
+    
+    [self setText:theID.translated];
+    
+}
 
 
 - (void)setTerrestrial:(BOOL)Terrestrial {
@@ -82,7 +98,11 @@
 @implementation UITextView (TerrestrialTextField)
 
 
-
+- (void)setIdentifier:(NSString *)theID {
+    
+    [self setText:theID.translated];
+    
+}
 
 
 - (void)setComment:(NSString *)comment {
@@ -115,8 +135,14 @@
 @implementation UIBarButtonItem (TerrestrialBarButtonItem)
 
 
-@dynamic identifier;
+@dynamic Identifier;
 @dynamic Terrestrial;
+
+- (void)setIdentifier:(NSString *)theID {
+    
+    [self setTitle:theID.translated];
+    
+}
 
 
 - (void)setTerrestrial:(BOOL)Terrestrial {
@@ -134,8 +160,14 @@
 
 @implementation UINavigationItem (TerrestrialNavigationItem)
 
-@dynamic identifier;
+@dynamic Identifier;
 @dynamic Terrestrial;
+
+- (void)setIdentifier:(NSString *)theID {
+    
+    [self setTitle:theID.translated];
+    
+}
 
 
 - (void)setTerrestrial:(BOOL)Terrestrial {
@@ -154,9 +186,14 @@
 
 @implementation UIViewController (TerrestrialViewController)
 
-@dynamic identifier;
+@dynamic Identifier;
 @dynamic Terrestrial;
 
+- (void)setIdentifier:(NSString *)theID {
+    
+    [self setTitle:theID.translated];
+    
+}
 
 
 - (void)setTerrestrial:(BOOL)Terrestrial {
