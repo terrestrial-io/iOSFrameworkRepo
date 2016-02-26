@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Terrestrial"
-  s.version          = "0.3.6-beta2"
+  s.version          = "0.3.6-beta3"
   s.summary          = "Translate an entire app with just 3 commands"
 
 # This description is used to generate tags and improve search results.
@@ -30,14 +30,15 @@ This cocoapod allows you to quickly get your app localized.
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.public_header_files = 'Terrestrial/*.{h}', 'Frameworks/TerrestrialPhotoshoot.framework/Headers/*.h'
+  s.public_header_files = 'Terrestrial/*.{h}'
 
-  s.source_files = 'Terrestrial/*.{h,m}', 'Frameworks/TerrestrialPhotoshoot.framework/Headers/*.h'
+  s.source_files = 'Terrestrial/*.{h,m}'
 
-  s.ios.preserve_paths = 'Frameworks/*.framework'
   s.ios.vendored_frameworks = "Frameworks/TerrestrialPhotoshoot.framework"
-  s.ios.resource = "Frameworks/TerrestrialPhotoshoot.framework"
-  s.ios.xcconfig = { 'LD_RUNPATH_SEARCH_PATHS' => '"$(PODS_ROOT)/Terrestrial/Frameworks/TerrestrialPhotoshoot.framework"' }
+  s.ios.xcconfig = {
+    'LD_RUNPATH_SEARCH_PATHS' => '"$(PODS_ROOT)/Terrestrial/Frameworks/TerrestrialPhotoshoot.framework"',
+    'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/Terrestrial/Frameworks'
+  }
 
 
 end

@@ -16,8 +16,11 @@ FOUNDATION_EXPORT double TerrestrialPhotoshootVersionNumber;
 FOUNDATION_EXPORT const unsigned char TerrestrialPhotoshootVersionString[];
 
 
+#if !defined(screenshotLaunchArgument)
 
-static NSString * const screenshotLaunchArgument = @"TerrestrialScreenShotMode";
+#define screenshotLaunchArgument @"TerrestrialScreenShotMode"
+
+#endif
 
 
 @interface TerrestrialPhotoshoot : NSObject
