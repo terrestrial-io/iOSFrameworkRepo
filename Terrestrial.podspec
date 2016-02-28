@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Terrestrial"
-  s.version          = "0.3.6-beta4"
+  s.version          = "0.3.6"
   s.summary          = "Translate an entire app with just 3 commands"
 
 # This description is used to generate tags and improve search results.
