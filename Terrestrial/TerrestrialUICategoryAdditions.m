@@ -74,7 +74,8 @@
 
 - (void)setIdentifier:(NSString *)theID {
     
-    [self setText:theID.translated];
+   // [self setText:theID.translated];
+    [self setPlaceholder:self.placeholder.translated];
     
 }
 
@@ -83,7 +84,7 @@
     
     if (Terrestrial == true) {
         
-        [self setText:self.text.translated];
+       // [self setText:self.text.translated];
         [self setPlaceholder:self.placeholder.translated];
         
     }
@@ -122,6 +123,7 @@
     if (Terrestrial == true) {
         
         [self setText:self.text.translated];
+        
         
     }
     
