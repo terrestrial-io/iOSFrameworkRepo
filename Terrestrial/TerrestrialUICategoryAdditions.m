@@ -18,11 +18,6 @@
 @dynamic Terrestrial;
 
 
-- (void)setComment:(NSString *)comment {
-    
-    
-}
-
 - (void)setIdentifier:(NSString *)theID {
     
         [self setText:theID.translated];
@@ -33,7 +28,7 @@
     
     if (Terrestrial == true) {
         
-        [self setText:self.text.translated];
+
         
     }
     
@@ -56,8 +51,7 @@
 - (void)setTerrestrial:(BOOL)Terrestrial {
     
     if (Terrestrial == true) {
-        
-        [self setTitle:self.titleLabel.text.translated forState:UIControlStateNormal];
+
         
     }
     
@@ -74,7 +68,6 @@
 
 - (void)setIdentifier:(NSString *)theID {
     
-   // [self setText:theID.translated];
     [self setPlaceholder:self.placeholder.translated];
     
 }
@@ -84,8 +77,7 @@
     
     if (Terrestrial == true) {
         
-       // [self setText:self.text.translated];
-        [self setPlaceholder:self.placeholder.translated];
+
         
     }
     
@@ -106,23 +98,12 @@
 }
 
 
-- (void)setComment:(NSString *)comment {
-    
-    if (![comment isEqualToString:@""]) {
-        
-       // [self setText:[self.text translatedWithContext:comment]];
-        
-    }
-    
-    
-}
 
 
 - (void)setTerrestrial:(BOOL)Terrestrial {
     
     if (Terrestrial == true) {
-        
-        [self setText:self.text.translated];
+    
         
         
     }
@@ -151,7 +132,6 @@
     
     if (Terrestrial == true) {
         
-        [self setTitle:self.title.translated];
         
     }
     
@@ -176,8 +156,6 @@
     
     if (Terrestrial == true) {
         
-        [self setTitle:self.title.translated];
-        [self setPrompt:self.prompt.translated];
         
     }
     
@@ -202,7 +180,6 @@
     
     if (Terrestrial == true) {
         
-        [self setTitle:self.title.translated];
         
     }
     
